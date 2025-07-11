@@ -1,0 +1,98 @@
+body {
+  font-family: 'Calibri', sans-serif;
+  background-color: #FFFDF9;
+  color: #333;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+}
+
+header {
+  background-color: #138D75;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+main {
+  padding: 2rem;
+}
+
+.section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fdfaf5;
+  border-left: 5px solid #F4D35E;
+  border-radius: 8px;
+}
+
+h2 {
+  color: #00796B;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 0.6rem;
+  text-align: left;
+}
+
+th {
+  background-color: #F4D35E;
+}
+
+.colors {
+  display: flex;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.color {
+  flex: 1;
+  padding: 1rem;
+  border-radius: 5px;
+  text-align: center;
+  font-weight: bold;
+}
+
+button {
+  background-color: #F88379;
+  color: white;
+  border: none;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e7716a;
+}
+
+footer {
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+  font-size: 0.9rem;
+}

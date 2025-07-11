@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inscription – Autruche & Compagnie</title>
+  <link rel="stylesheet" href="register.css">
+</head>
+<body>
+  <div class="register-container">
+    <h1>Créer un compte</h1>
+    <form id="register-form">
+      <label>Prénom</label>
+      <input type="text" id="firstName" required>
+
+      <label>Nom</label>
+      <input type="text" id="lastName" required>
+
+      <label>Email</label>
+      <input type="email" id="email" required>
+
+      <label>Téléphone</label>
+      <input type="text" id="phone" placeholder="0600000000" pattern="^0[1-9](\d{2}){4}$" required>
+
+      <label>Mot de passe</label>
+      <input type="password" id="password" minlength="14" required>
+
+      <label>Type d'adulte</label>
+      <select id="type">
+        <option value="PROFESSEUR">Professeur</option>
+        <option value="PARENT">Parent</option>
+        <option value="AUXILIAIRE">Auxiliaire</option>
+      </select>
+
+      <button type="submit">S'inscrire</button>
+      <p id="error-message" class="error"></p>
+    </form>
+  </div>
+
+  <script src="register.js"></script>
+</body>
+</html>
