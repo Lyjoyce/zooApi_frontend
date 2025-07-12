@@ -38,6 +38,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         <p><strong>Provenance :</strong> ${autruche.provenance}</p>
         <p><strong>Ranch :</strong> ${autruche.ranch}</p>
         <p><strong>Anecdote :</strong> ${autruche.anecdote}</p>
+        <p><strong>Genre :</strong> ${autruche.genre}</p>
       `;
       container.appendChild(div);
     });
