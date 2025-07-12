@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Test Toggle Table</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+
+  <button onclick="toggleTable()">Afficher / Masquer les ranchs</button>
+
+  <div id="ranch-table" style="display: none;">
+    <table>
+      <thead>
+        <tr>
+          <th>Ranch</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Les Olympiques</td>
+          <td>Ranch pour autruches sportives.</td>
+        </tr>
+        <tr>
+          <td>Les Ballerines</td>
+          <td>Ranch axé sur la reproduction.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script>
+    function toggleTable() {
+      const table = document.getElementById("ranch-table");
+      if (table.style.display === "none" || table.style.display === "") {
+        table.style.display = "block";
+      } else {
+        table.style.display = "none";
+      }
+    }
+  </script>
+
+</body>
+</html>

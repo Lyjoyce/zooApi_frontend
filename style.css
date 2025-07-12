@@ -19,6 +19,32 @@ header {
   height: auto;
   margin-bottom: 10px;
 }
+.nav-wrapper {
+  background-color: #F4D35E;
+  border: 2px solid #F4D35E;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
 
 .slogan {
   font-style: italic;
@@ -78,7 +104,8 @@ th {
 
 button {
   background-color: #F88379;
-  color: white;
+  color: black;
+  font-weight: bold;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 5px;
@@ -96,3 +123,26 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
 }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+th, td {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  background-color: #009688;
+  color: white;
+}
+
+ul {
+  padding-left: 1.2rem;
+}
+
+
