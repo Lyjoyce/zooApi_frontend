@@ -1,9 +1,4 @@
-const token = sessionStorage.getItem("jwt");
 
-  if (!token) {
-    // Redirige automatiquement les non-authentifiés vers la page de connexion
-    window.location.href = "/login.html";
-  }
   
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
@@ -15,7 +10,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   errorMsg.textContent = "";
 
   try {
-    const response = await fetch("https://ton-backend/api/v1/auth/login", {
+    const response = await fetch("https://localhost:8081/api/v1/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

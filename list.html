@@ -1,0 +1,13 @@
+<h2>Liste d’attente (simulée)</h2>
+<ul id="waiting-list"></ul>
+
+<script>
+  const list = JSON.parse(localStorage.getItem("waitingList")) || [];
+  const ul = document.getElementById("waiting-list");
+
+  list.forEach(user => {
+    const li = document.createElement("li");
+    li.textContent = `${user.firstName} ${user.lastName} (${user.type}) – ${user.email}`;
+    ul.appendChild(li);
+  });
+</script>

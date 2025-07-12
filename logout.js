@@ -1,10 +1,12 @@
-document.getElementById("logout-button").addEventListener("click", () => {
-    // Supprimer le token du stockage
-    sessionStorage.removeItem("jwt");
+function logout() {
+  // Supprime uniquement le token (ou tout si besoin)
+  sessionStorage.removeItem("jwt");
+  // Si tu veux vraiment vider toute la session :
+  // sessionStorage.clear();
 
-    // (Facultatif) Supprimer d'autres infos éventuelles
-    sessionStorage.clear();
+  // Redirige vers la page de connexion
+  window.location.href = "/login.html";
+}
 
-    // Redirection vers la page de connexion
-    window.location.href = "/login.html";
-  });
+// Attache l'événement au bouton déconnexion
+document.getElementById("logout-button").addEventListener("click", logout);

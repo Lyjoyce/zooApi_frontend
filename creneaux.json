@@ -1,0 +1,14 @@
+[
+  { "jour": "Lundi", "horaires": ["10:00", "14:00"] },
+  { "jour": "Mardi", "horaires": ["09:00", "13:30", "15:00"] },
+  { "jour": "Jeudi", "horaires": ["10:30", "14:30"] },
+  { "jour": "Vendredi", "horaires": ["11:00", "16:00"] },
+  
+  { "jour": "Lundi", "heure": "10h00 - 11h00" },
+  { "jour": "Mardi", "heure": "14h00 - 15h00" },
+  { "jour": "Mercredi", "heure": "09h00 - 10h00" },
+  { "jour": "Jeudi", "heure": "13h00 - 14h00" },
+  { "jour": "Vendredi", "heure": "15h00 - 16h00" }
+]
+
+

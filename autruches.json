@@ -1,0 +1,252 @@
+[
+  {
+    "nom": "Athéna",
+    "age": 4,
+    "poids": 120,
+    "taille": 2.4,
+    "provenance": "Kenya",
+    "ranch": "Les Olympiques",
+    "anecdote": "Courait plus vite qu’un vélo.",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Zaza",
+    "age": 2,
+    "poids": 90,
+    "taille": 2.1,
+    "provenance": "Namibie",
+    "ranch": "Les Ballerines",
+    "anecdote": "Adore danser autour des visiteurs.",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Coco",
+    "age": 6,
+    "poids": 135,
+    "taille": 2.7,
+    "provenance": "Afrique du Sud",
+    "ranch": "Les Pondeuses",
+    "anecdote": "A pondu un œuf de 2kg !",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Rio",
+    "age": 3,
+    "poids": 110,
+    "taille": 2.3,
+    "provenance": "Botswana",
+    "ranch": "Les Olympiques",
+    "anecdote": "Fait la course avec les enfants.",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Lola",
+    "age": 5,
+    "poids": 125,
+    "taille": 2.5,
+    "provenance": "Sénégal",
+    "ranch": "Les Ballerines",
+    "anecdote": "Connue pour ses cris stridents.",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Olga",
+    "age": 5,
+    "poids": 120,
+    "taille": 2.3,
+    "ranch": "Les Olympiques",
+    "provenance": "Namibie",
+    "anecdote": "Championne de la course de 2023",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Ballerine",
+    "age": 2,
+    "poids": 90,
+    "taille": 1.9,
+    "ranch": "Les Ballerines",
+    "provenance": "Afrique du Sud",
+    "anecdote": "Danse à chaque lever du soleil",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Plume",
+    "age": 6,
+    "poids": 130,
+    "taille": 2.5,
+    "ranch": "Les Pondeuses",
+    "provenance": "Tanzanie",
+    "anecdote": "Pondeuse hors pair",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Oscar",
+    "age": 4,
+    "poids": 110,
+    "taille": 2.2,
+    "ranch": "Les Olympiques",
+    "provenance": "Kenya",
+    "anecdote": "Aime jouer avec les enfants",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Zaza",
+    "age": 3,
+    "poids": 98,
+    "taille": 2.1,
+    "ranch": "Les Pondeuses",
+    "provenance": "Zambie",
+    "anecdote": "A une plume rose naturelle",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Gaston",
+    "age": 7,
+    "poids": 145,
+    "taille": 2.6,
+    "ranch": "Les Olympiques",
+    "provenance": "Afrique du Sud",
+    "anecdote": "Gagne toutes les courses",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Nana",
+    "age": 2,
+    "poids": 85,
+    "taille": 1.8,
+    "ranch": "Les Ballerines",
+    "provenance": "Namibie",
+    "anecdote": "Très timide",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Luna",
+    "age": 4,
+    "poids": 112,
+    "taille": 2.3,
+    "ranch": "Les Pondeuses",
+    "provenance": "Kenya",
+    "anecdote": "Produit des œufs géants",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Boubou",
+    "age": 1,
+    "poids": 60,
+    "taille": 1.6,
+    "ranch": "Les Ballerines",
+    "provenance": "Tanzanie",
+    "anecdote": "Plus jeune de la ferme",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Rocco",
+    "age": 5,
+    "poids": 125,
+    "taille": 2.4,
+    "ranch": "Les Olympiques",
+    "provenance": "Cameroun",
+    "anecdote": "Fait la course contre les enfants",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Tina",
+    "age": 3,
+    "poids": 99,
+    "taille": 2.0,
+    "ranch": "Les Ballerines",
+    "provenance": "Afrique du Sud",
+    "anecdote": "Très sociable",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Mimi",
+    "age": 6,
+    "poids": 118,
+    "taille": 2.2,
+    "ranch": "Les Pondeuses",
+    "provenance": "Zambie",
+    "anecdote": "Sa danse fait le tour de TikTok",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Juju",
+    "age": 4,
+    "poids": 110,
+    "taille": 2.3,
+    "ranch": "Les Olympiques",
+    "provenance": "Tanzanie",
+    "anecdote": "Est née pendant une tempête",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Coco",
+    "age": 5,
+    "poids": 135,
+    "taille": 2.5,
+    "ranch": "Les Pondeuses",
+    "provenance": "Kenya",
+    "anecdote": "Roi de la basse-cour",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Didi",
+    "age": 3,
+    "poids": 101,
+    "taille": 2.1,
+    "ranch": "Les Ballerines",
+    "provenance": "Namibie",
+    "anecdote": "Adore les visiteurs",
+    "genre": "femelle"
+  },
+  {
+    "nom": "Simba",
+    "age": 5,
+    "poids": 130,
+    "taille": 2.6,
+    "ranch": "Les Olympiques",
+    "provenance": "Kenya",
+    "anecdote": "Rugissait comme un lion dans son enfance",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Brutus",
+    "age": 6,
+    "poids": 140,
+    "taille": 2.7,
+    "ranch": "Les Olympiques",
+    "provenance": "Afrique du Sud",
+    "anecdote": "Capable de casser une planche avec ses pattes",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Momo",
+    "age": 3,
+    "poids": 105,
+    "taille": 2.3,
+    "ranch": "Les Pondeuses",
+    "provenance": "Tanzanie",
+    "anecdote": "Le plus bavard de tous",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Toto",
+    "age": 4,
+    "poids": 112,
+    "taille": 2.4,
+    "ranch": "Les Ballerines",
+    "provenance": "Namibie",
+    "anecdote": "Fait le moonwalk quand il court",
+    "genre": "mâle"
+  },
+  {
+    "nom": "Nestor",
+    "age": 5,
+    "poids": 128,
+    "taille": 2.5,
+    "ranch": "Les Olympiques",
+    "provenance": "Zambie",
+    "anecdote": "Chante en dormant",
+    "genre": "mâle"
+  }
+]

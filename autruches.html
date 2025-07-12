@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Autruches du Ranch</title>
+  <link rel="stylesheet" href="autruches.css">
+</head>
+<body>
+
+  <h1>🐣 Autruches de la ferme</h1>
+
+  <label for="ranch-select">Filtrer par ranch :</label>
+  <select id="ranch-select">
+    <option value=""> Tous les ranchs </option>
+    <option value="Les Olympiques">Les Olympiques</option>
+    <option value="Les Ballerines">Les Ballerines</option>
+    <option value="Les Pondeuses">Les Pondeuses</option>
+  </select>
+
+  <button id="filtre-combine">Filtre combiné (>3 ans, >100kg, ranch choisi)</button>
+
+  <div id="autruches-container">Chargement...</div>
+
+  <ul id="liste-autruches"></ul>
+
+  <script src="autruches.js"></script>
+</body>
+</html>

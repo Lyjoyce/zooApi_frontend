@@ -1,0 +1,77 @@
+body {
+  font-family: Calibri, sans-serif;
+  background-color: #f2f2f2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.register-container {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 480px;
+}
+
+h1 {
+  text-align: center;
+  color: #138D75; /* Vert canard */
+}
+
+label {
+  display: block;
+  margin-top: 1rem;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  border: 1px solid #138D75 ;
+  border-radius: 6px;
+  font-family: inherit;
+}
+
+fieldset {
+  margin-top: 1.5rem;
+  border: 1px solid black;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+legend {
+  font-weight: bold;
+  color: #F4D35E; /* Jaune savane */
+}
+
+button {
+  margin-top: 1.5rem;
+  width: 100%;
+  background-color: #F4A261; /* Rose corail */
+  color: white;
+  border: none;
+  padding: 0.7rem;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #e29557;
+}
+
+.error {
+  color: red;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.success {
+  color: #138D75;
+  margin-top: 1rem;
+  text-align: center;
+}

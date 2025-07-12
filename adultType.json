@@ -1,0 +1,99 @@
+[
+  {
+    "firstName": "Marie",
+    "lastName": "Curie",
+    "email": "marie.curie@test.fr",
+    "phone": "0612345678",
+    "password": "MotdepasseTresLong1!",
+    "type": "PROFESSEUR"
+  },
+  {
+    "firstName": "Jean",
+    "lastName": "Dupont",
+    "email": "jean.dupont@test.fr",
+    "phone": "0623456789",
+    "password": "MotdepasseTresLong2@",
+    "type": "PARENT"
+  },
+  {
+    "firstName": "Sophie",
+    "lastName": "Martin",
+    "email": "sophie.martin@test.fr",
+    "phone": "0634567890",
+    "password": "MotdepasseTresLong3#",
+    "type": "AUXILIAIRE"
+  },
+  {
+    "firstName": "Paul",
+    "lastName": "Bernard",
+    "email": "paul.bernard@test.fr",
+    "phone": "0645678901",
+    "password": "MotdepasseTresLong4$",
+    "type": "PROFESSEUR"
+  },
+  {
+    "firstName": "Claire",
+    "lastName": "Lemoine",
+    "email": "claire.lemoine@test.fr",
+    "phone": "0656789012",
+    "password": "MotdepasseTresLong5%",
+    "type": "PARENT"
+  },
+  {
+    "firstName": "Michel",
+    "lastName": "Faure",
+    "email": "michel.faure@test.fr",
+    "phone": "0667890123",
+    "password": "MotdepasseTresLong6^",
+    "type": "AUXILIAIRE"
+  },
+  {
+    "firstName": "Isabelle",
+    "lastName": "Rousseau",
+    "email": "isabelle.rousseau@test.fr",
+    "phone": "0678901234",
+    "password": "MotdepasseTresLong7&",
+    "type": "PROFESSEUR"
+  },
+  {
+    "firstName": "Laurent",
+    "lastName": "Garnier",
+    "email": "laurent.garnier@test.fr",
+    "phone": "0689012345",
+    "password": "MotdepasseTresLong8*",
+    "type": "PARENT"
+  },
+  {
+    "firstName": "Nathalie",
+    "lastName": "Dubois",
+    "email": "nathalie.dubois@test.fr",
+    "phone": "0690123456",
+    "password": "MotdepasseTresLong9(",
+    "type": "AUXILIAIRE"
+  },
+  {
+    "firstName": "Antoine",
+    "lastName": "Michel",
+    "email": "antoine.michel@test.fr",
+    "phone": "0601234567",
+    "password": "MotdepasseTresLong10)",
+    "type": "PROFESSEUR"
+  },
+  {
+    "firstName": "Caroline",
+    "lastName": "Blanc",
+    "email": "caroline.blanc@test.fr",
+    "phone": "0612345670",
+    "password": "MotdepasseTresLong11_",
+    "type": "PARENT"
+  },
+  {
+    "firstName": "David",
+    "lastName": "Moreau",
+    "email": "david.moreau@test.fr",
+    "phone": "0623456701",
+    "password": "MotdepasseTresLong12+",
+    "type": "AUXILIAIRE"
+
+  }
+]

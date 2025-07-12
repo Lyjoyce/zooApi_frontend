@@ -40,7 +40,7 @@ document.getElementById("register-form").addEventListener("submit", async (e) =>
     sessionStorage.setItem("jwt", token);
 
     // Redirection après succès
-    window.location.href = "/dashboard.html";
+    window.location.href = "login.html";
   } catch (error) {
     errorMsg.textContent = error.message;
   }
