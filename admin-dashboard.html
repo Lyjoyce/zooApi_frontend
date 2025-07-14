@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="admin-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Dashboard Administrateur</h1>
+  </header>
+
+  <main>
+    <!-- Création compte employé -->
+    <section class="creation">
+      <h2>Créer un compte employé</h2>
+      <form id="employee-form">
+        <label>Prénom : <input type="text" id="empFirstName" required></label>
+        <label>Nom : <input type="text" id="empLastName" required></label>
+        <label>Email : <input type="email" id="empEmail" required></label>
+        <label>Mot de passe : <input type="password" id="empPassword" required></label>
+        <button type="submit">Créer l’employé</button>
+      </form>
+    </section>
+
+    <!-- Liste d’attente -->
+    <section class="liste">
+      <h2>Les Ateliers</h2>
+
+      <div class="atelier">
+        <h3>Omelette géante</h3>
+        <ul id="liste-omelette"></ul>
+      </div>
+
+      <div class="atelier">
+        <h3>Nourrir les autruches</h3>
+        <ul id="liste-nourrir"></ul>
+      </div>
+    </section>
+
+    <!-- Graphique ponte -->
+    <section class="graphique">
+      <h2>Ponte d'œufs cette semaine</h2>
+      <canvas id="eggsChart" width="600" height="400"></canvas>
+    </section>
+
+    <!-- Graphique ateliers -->
+    <section class="graphique">
+      <h2>Ateliers Omelette par jour</h2>
+      <canvas id="workshopsChart" width="600" height="400"></canvas>
+    </section>
+
+    <!-- Validation œufs vétérinaire -->
+    <section class="validation-oeufs">
+      <h2>Validation des œufs par le vétérinaire</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Date de ponte</th>
+            <th>Femelle</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="egg-table-body"></tbody>
+      </table>
+    </section>
+  </main>
+
+  <script src="admin-dashboard.js"></script>
+</body>
+</html>
