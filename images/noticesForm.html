@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Laisser un avis – Zoo Autruche</title>
+  <link rel="stylesheet" href="noticesReading.css">
+</head>
+<body>
+  <header>
+    <img src="/images/3.png" alt="Logo Ostrich Farmer" class="logo">
+    <h1>Autruche & Compagnie</h1>
+    <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
+    <div class="nav-wrapper">
+      <nav class="top-nav">
+        <a href="/index.html#accueil">Accueil</a>
+        <a href="/index.html#ferme">La Ferme</a>
+        <a href="/index.html#ateliers">Ateliers</a>
+        <a href="/index.html#inscription">Inscription</a>
+        <a href="/index.html#ranchs">Ranchs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="section">
+    <h2>Laisser un avis</h2>
+    <form id="avis-form">
+      <textarea id="comment" placeholder="Votre avis..." required></textarea><br>
+      <label for="rating">Note :</label>
+      <select id="rating">
+        <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+      </select><br>
+      <button type="submit">Envoyer</button>
+    </form>
+  </main>
+
+  <footer id="contact">
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+    <p>Contact : <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> | Téléphone : 01 23 45 67 89</p>
+  </footer>
+
+  <script>
+    document.getElementById('avis-form').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const comment = document.getElementById('comment').value;
+      const rating = parseInt(document.getElementById('rating').value);
+
+      const response = await fetch('https://ton-backend/api/avis', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-User': 'Jean Dupont', // remplace par le nom de l’adulte connecté ou extrait du token
+        },
+        body: JSON.stringify({ comment, rating })
+      });
+
+      if (response.ok) {
+        alert("Merci pour votre avis !");
+        location.reload();
+      } else {
+        alert("Erreur lors de l’envoi.");
+      }
+    });
+  </script>
+</body>
+</html>
