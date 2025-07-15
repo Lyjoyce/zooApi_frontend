@@ -1,4 +1,12 @@
 document.addEventListener("DOMContentLoaded", async () => {
+  const token = sessionStorage.getItem("jwt");
+
+  if (!token) {
+    alert("Vous devez être connecté pour accéder à cette page.");
+    window.location.href = "login.html";
+    return;
+  }
+
   const container = document.getElementById("autruches-container");
   const ranchSelect = document.getElementById("ranch-select");
   const filtreBtn = document.getElementById("filtre-combine");
@@ -12,7 +20,6 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   // ========== FETCH 2 (simulateur) ==========
   async function fetchProvenances() {
-    // Simuler un fetch depuis une autre source (utile si tu ajoutes une API plus tard)
     const response = await fetch("autruches.json");
     const autruches = await response.json();
     const provenances = [...new Set(autruches.map(a => a.provenance))];

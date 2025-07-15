@@ -3,25 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <title>Autruches du Ranch</title>
+  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="autruches.css">
 </head>
 <body>
+  <header>
+    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo">
+    <h1>Autruche & Compagnie</h1>
+    <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
 
-  <h1>🐣 Autruches de la ferme</h1>
+    <div class="nav-wrapper">
+      <nav class="top-nav">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#ferme">La Ferme</a>
+        <a href="index.html#ateliers">Ateliers</a>
+        <a href="index.html#inscription">Inscription</a>
+        <a href="index.html#ranchs">Ranchs</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
 
-  <label for="ranch-select">Filtrer par ranch :</label>
-  <select id="ranch-select">
-    <option value=""> Tous les ranchs </option>
-    <option value="Les Olympiques">Les Olympiques</option>
-    <option value="Les Ballerines">Les Ballerines</option>
-    <option value="Les Pondeuses">Les Pondeuses</option>
-  </select>
+  <main>
+    <h2>🐣 Autruches de la ferme</h2>
 
-  <button id="filtre-combine">Filtre combiné (>3 ans, >100kg, ranch choisi)</button>
+    <label for="ranch-select">Filtrer par ranch :</label>
+    <select id="ranch-select">
+      <option value=""> Tous les ranchs </option>
+      <option value="Les Olympiques">Les Olympiques</option>
+      <option value="Les Ballerines">Les Ballerines</option>
+      <option value="Les Pondeuses">Les Pondeuses</option>
+    </select>
 
-  <div id="autruches-container">Chargement...</div>
+    <button id="filtre-combine">Filtre combiné (>3 ans, >100kg, ranch choisi)</button>
 
-  <ul id="liste-autruches"></ul>
+    <div id="autruches-container">Chargement...</div>
+
+    <ul id="liste-autruches"></ul>
+  </main>
+
+  <footer id="contact">
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+    <p>Contact : <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> | Téléphone : 01 23 45 67 89</p>
+  </footer>
 
   <script src="autruches.js"></script>
 </body>

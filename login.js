@@ -33,7 +33,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     sessionStorage.setItem("jwt", token);
 
     // Redirection vers l’espace utilisateur (modifie si besoin)
-    window.location.href = "/dashboard.html";
+    window.location.href = "/autruches.html";
   } catch (error) {
     errorMsg.textContent = error.message;
   }
