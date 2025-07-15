@@ -12,13 +12,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   const filtreBtn = document.getElementById("filtre-combine");
   const liste = document.getElementById("liste-autruches");
 
-  // ========== FETCH 1 ==========
   async function chargerAutruches() {
     const res = await fetch("autruches.json");
     return await res.json();
   }
 
-  // ========== FETCH 2 (simulateur) ==========
+
   async function fetchProvenances() {
     const response = await fetch("autruches.json");
     const autruches = await response.json();
@@ -26,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     return provenances;
   }
 
-  // ========== AFFICHAGE ==========
+
   function afficherAutruches(data) {
     container.innerHTML = "";
     if (data.length === 0) {
@@ -51,7 +50,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // ========== FETCH 3 & FILTRE COMBINÉ ==========
+  //  FILTRE
   async function appliquerFiltreCombiné() {
     const autruches = await chargerAutruches();
     const selectedRanch = ranchSelect.value;
@@ -64,7 +63,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     afficherAutruches(filtrées);
 
-    // Liste courte
+   
     liste.innerHTML = "";
     filtrées.forEach(a => {
       const li = document.createElement("li");
@@ -73,7 +72,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     });
   }
 
-  // Données globales
+ 
   const toutesLesAutruches = await chargerAutruches();
   afficherAutruches(toutesLesAutruches);
 
@@ -91,7 +90,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   // Filtre combiné
   filtreBtn.addEventListener("click", appliquerFiltreCombiné);
 
-  // Afficher les provenances (exemple d'usage de fetch supplémentaire)
+ 
   const provenances = await fetchProvenances();
-  console.log("Provenances uniques :", provenances); // optionnel
+  console.log("Provenances uniques :", provenances); 
 });
