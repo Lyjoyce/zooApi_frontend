@@ -113,7 +113,8 @@ button {
 }
 
 button:hover {
-  background-color: #e7716a;
+  background-color: #005349;
+  color: white;
 }
 
 footer {
@@ -144,5 +145,85 @@ th {
 ul {
   padding-left: 1.2rem;
 }
+.footer-buttons {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
 
+.btn-footer-yellow {
+  background-color: #FFD966;
+  color: #000;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
 
+.btn-footer-yellow:hover {
+  background-color: #f1c93a;
+  color: #000;
+}
+
+.btn-footer-pink {
+  background-color: #F88379;
+  color: #000;
+  padding: 0.6rem 1.2rem;
+  border-radius: 8px;
+  font-weight: bold;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-footer-pink:hover {
+  background-color: #e56c63;
+  color: #000;
+}
+footer a {
+  color: #F88379;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #F4D35E;
+  text-decoration: underline;
+}
+.btn-footer-yellow,
+.btn-footer-pink {
+  font-weight: bold;
+  padding: 0.6rem 1rem;
+  border-radius: 5px;
+  text-decoration: none;
+  display: inline-block;
+  margin: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.btn-footer-yellow {
+  background-color: #F4D35E;
+  color: #000;
+}
+
+.btn-footer-yellow:hover {
+  background-color: #e6c54d;
+  color: #000;
+  transform: scale(1.05);
+  font-size: 1.05rem;
+}
+
+.btn-footer-pink {
+  background-color: #F88379;
+  color: #000;
+}
+
+.btn-footer-pink:hover {
+  background-color: #e7716a;
+  color: #000;
+  transform: scale(1.05);
+  font-size: 1.05rem;
+}
