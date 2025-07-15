@@ -18,7 +18,7 @@ body {
 
 h1 {
   text-align: center;
-  color: #138D75;
+  color: #00796B;
 }
 
 label {
@@ -37,8 +37,8 @@ input, select {
 button {
   margin-top: 1.5rem;
   width: 100%;
-  background-color: #F4A261;
-  color: white;
+  background-color: #F88379;
+  color: black;
   border: none;
   padding: 0.7rem;
   border-radius: 6px;
@@ -47,7 +47,7 @@ button {
 }
 
 button:hover {
-  background-color: #e29557;
+  background-color: #F88379;
 }
 
 .error {
