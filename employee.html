@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Validation des Avis - Employé</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <header>
+    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo">
+    <h1>Autruche & Compagnie</h1>
+    <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
+
+    <div class="nav-wrapper">
+      <nav class="top-nav">
+        <a href="/index.html#accueil">Accueil</a>
+        <a href="/index.html#ferme">La Ferme</a>
+        <a href="/index.html#ateliers">Ateliers</a>
+        <a href="/index.html#inscription">Inscription</a>
+        <a href="/index.html#ranchs">Ranchs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Validation des Avis</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Date</th>
+          <th>Message</th>
+          <th>Valider</th>
+        </tr>
+      </thead>
+      <tbody id="avisTableBody">
+        <!-- Les avis non validés seront insérés ici -->
+      </tbody>
+    </table>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-buttons">
+      <a href="/noticesReading.html" class="btn-footer-yellow">Lire les avis</a>
+      <a href="/notices.html" class="btn-footer-pink">Écrire un avis</a>
+    </div>
+    <p>
+      Contact :
+      <a href="mailto:contact@autruche-compagnie.fr" style="color: #FFD966;">contact@autruche-compagnie.fr</a> |
+      Téléphone : 01 23 45 67 89
+    </p>
+    <p>
+      <a href="contact.html" style="color: #FFD966;">Contact</a> |
+      <a href="mentions-legales.html" style="color: #FFD966;">Mentions légales</a> |
+      <a href="cgu.html" style="color: #FFD966;">CGU</a>
+    </p>
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+  </footer>
+
+  <script>
+    async function chargerAvis() {
+      const response = await fetch('/api/v1/avis/non-valides');
+      const avis = await response.json();
+      const tbody = document.getElementById('avisTableBody');
+      tbody.innerHTML = '';
+
+      avis.forEach(a => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+          <td>${a.firstName}</td>
+          <td>${new Date(a.date).toLocaleString()}</td>
+          <td>${a.message || '(Pas de message)'}</td>
+          <td><button onclick="validerAvis('${a.id}')">Valider</button></td>
+        `;
+        tbody.appendChild(row);
+      });
+    }
+
+    async function validerAvis(id) {
+      const response = await fetch(`/api/v1/employees/${id}/validate`, { method: 'PUT' });
+      if (response.ok) {
+        alert("Avis validé !");
+        chargerAvis(); // rafraîchir la liste
+      } else {
+        alert("Erreur lors de la validation.");
+      }
+    }
+
+    window.onload = chargerAvis;
+  </script>
+
+</body>
+</html>
