@@ -1,14 +1,4 @@
 
-function toggleTable() {
-      const table = document.getElementById("ranch-table");
-      if (table.style.display === "none" || table.style.display === "") {
-        table.style.display = "block";
-      } else {
-        table.style.display = "none";
-      }
-    }
-
-    
   document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById('avis-form');
 

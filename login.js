@@ -32,7 +32,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     // Stockage sécurisé du token dans sessionStorage (non persistant)
     sessionStorage.setItem("jwt", token);
 
-    // Redirection vers l’espace utilisateur (modifie si besoin)
+    // Redirection vers 
     window.location.href = "/autruches.html";
   } catch (error) {
     errorMsg.textContent = error.message;
