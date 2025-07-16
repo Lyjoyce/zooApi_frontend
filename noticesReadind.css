@@ -1,32 +1,91 @@
-* {
-  box-sizing: border-box;
-}
-
 body {
-  font-family: Calibri, sans-serif;
-  background-color: #f2f2f2;
+  font-family: 'Calibri', sans-serif;
+  background-color: #FFFDF9;
+  color: #333;
   margin: 0;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 100vh;
+  line-height: 1.6;
 }
 
-.register-container {
-  background-color: #fff;
+header {
+  background-color: #00796B;
+  color: white;
+  text-align: center;
   padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-  width: 90%;
-  max-width: 450px;
-  margin: 2rem auto;
 }
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.nav-wrapper {
+  background-color: #F4D35E;
+  border: 2px solid #F4D35E;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+main {
+  padding: 2rem;
+}
+
 
 h1 {
   text-align: center;
   color: #00796B;
   margin-bottom: 1.5rem;
+}
+.section {
+  margin-bottom: 2rem;
+  padding: 1rem;
+  background-color: #fdfaf5;
+  border-left: 5px solid #F4D35E;
+  border-radius: 8px;
+}
+.btn{
+  padding: 5px;
+  text-decoration: none;
+  color: #000;
+  font-weight: bold ;
+  background-color: #F4D35E;
+  border-radius: 5px;
+  margin-right: 10px;
+}
+
+.btn:hover{
+  background-color:#000 ;
+  color: #F4D35E;
+}
+
+h2 {
+  color: #005349;
 }
 
 form label {
@@ -152,4 +211,39 @@ footer a:hover {
   .btn-footer-pink {
     font-size: 0.95em;
   }
+}
+
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+}
+
+footer a {
+  color: #F88379;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #F4D35E;
+  text-decoration: underline;
 }

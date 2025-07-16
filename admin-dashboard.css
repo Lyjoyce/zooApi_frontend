@@ -6,10 +6,24 @@ body {
 }
 
 header {
-  background-color: #138D75;
+  background-color: #005349;
   color: white;
   padding: 1rem;
   text-align: center;
+}
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
 }
 
 main {
@@ -44,7 +58,7 @@ input {
 
 button {
   background-color: #F88379;
-  color: white;
+  color: #000000;
   border: none;
   padding: 0.7rem 1rem;
   border-radius: 6px;
@@ -85,4 +99,66 @@ th, td {
   padding: 10px;
   border: 1px solid #ccc;
   text-align: left;
+}
+footer {
+  background-color: #000;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  margin-top: 4rem;
+}
+
+footer a {
+  color: white;
+  text-decoration: underline;
+}
+
+footer a:hover {
+  text-decoration: none;
+  color: #F4D35E;
+}
+
+footer .logo-home-link {
+  margin-bottom: 1rem;
+}
+
+footer .logo-home-link img {
+  width: 80px;
+  margin-bottom: 1rem;
+}
+
+.footer-buttons {
+  margin-top: 1.5rem;
+}
+
+.footer-buttons p {
+  margin-bottom: 1rem;
+}
+
+.btn-footer-yellow,
+.btn-footer-pink {
+  display: inline-block;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  font-weight: bold;
+  margin: 0.2rem;
+  text-decoration: none;
+}
+
+.btn-footer-yellow {
+  background-color: #F4D35E;
+  color: #000000;
+}
+
+.btn-footer-yellow:hover {
+  background-color: #e2c14f;
+}
+
+.btn-footer-pink {
+  background-color: #F88379;
+  color: #000000;
+}
+
+.btn-footer-pink:hover {
+  background-color: #d96c66;
 }

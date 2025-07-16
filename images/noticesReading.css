@@ -156,3 +156,66 @@ footer a:hover {
   color:  #F4D35E;
   text-decoration: underline;
 }
+
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
+}
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background-color: #000;
+  color: #fff;
+  width: 100%;
+}
+
+footer a {
+  color: #F88379;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+footer a:hover {
+  color: #F4D35E;
+  text-decoration: underline;
+}
+
+.btn-footer-yellow,
+.btn-footer-pink {
+  display: inline-block;
+  padding: 0.5em 1em;
+  margin: 0.5em;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 1em;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: #000;
+}
+
+.btn-footer-yellow {
+  background-color: #F4D35E;
+}
+
+.btn-footer-yellow:hover,
+.btn-footer-pink:hover {
+  font-size: 1.1em;
+  padding: 0.6em 1.2em;
+  color: #000;
+}
+
+.btn-footer-pink {
+  background-color: #F88379;
+}
