@@ -8,7 +8,7 @@ body {
 }
 
 header {
-  background-color: #00796B;
+  background-color: #005349;
   color: white;
   text-align: center;
   padding: 2rem;
@@ -60,7 +60,7 @@ main {
   margin-bottom: 2rem;
   padding: 1rem;
   background-color: #fdfaf5;
-  border-left: 5px solid #F4D35E;
+  border-left: 5px solid #138D75;
   border-radius: 8px;
 }
 .btn{

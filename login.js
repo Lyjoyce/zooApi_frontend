@@ -33,7 +33,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     sessionStorage.setItem("jwt", token);
 
     // Redirection vers 
-    window.location.href = "/autruches.html";
+    window.location.href = "/index.html";
   } catch (error) {
     errorMsg.textContent = error.message;
   }
