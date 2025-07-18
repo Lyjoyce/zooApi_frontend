@@ -14,11 +14,21 @@ header {
   padding: 2rem;
 }
 
-.logo {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
 }
+
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
+}
+
 .nav-wrapper {
   background-color: #F4D35E;
   border: 2px solid #F4D35E;
