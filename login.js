@@ -1,5 +1,3 @@
-
-  
 document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
@@ -10,7 +8,7 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
   errorMsg.textContent = "";
 
   try {
-    const response = await fetch("https://localhost:8081/api/v1/auth/login", {
+    const response = await fetch("http://localhost:8081/api/v1/auth/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

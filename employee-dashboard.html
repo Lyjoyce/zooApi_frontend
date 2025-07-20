@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Validation des Avis - Employé</title>
+  <style>
+    body { font-family: Arial; padding: 2rem; }
+    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+    button { padding: 6px 12px; }
+    header img.logo { height: 60px; }
+    .nav-wrapper nav a { margin-right: 15px; }
+    footer { margin-top: 3rem; font-size: 0.9rem; text-align: center; }
+    .btn-footer-yellow, .btn-footer-pink { padding: 0.5rem 1rem; margin: 0.5rem; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <button id="logout-button">Déconnexion</button>
+    <p id="employee-firstName"></p>
+
+
+    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo">
+    <h1>Autruche & Compagnie</h1>
+    <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
+
+    <div class="nav-wrapper">
+      <nav class="top-nav">
+        <a href="/index.html#accueil">Accueil</a>
+        <a href="/index.html#ferme">La Ferme</a>
+        <a href="/index.html#ateliers">Ateliers</a>
+        <a href="/index.html#inscription">Inscription</a>
+        <a href="/index.html#ranchs">Ranchs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <h2>Validation des Avis</h2>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Prénom</th>
+          <th>Date</th>
+          <th>Note</th>
+          <th>Message</th>
+          <th>Action</th>
+        </tr>
+      </thead>
+      <tbody id="avisTableBody">
+        <!-- Les avis non validés seront insérés ici -->
+      </tbody>
+    </table>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-buttons">
+      <a href="/noticesReading.html" class="btn-footer-yellow">Lire les avis</a>
+      <a href="/notices.html" class="btn-footer-pink">Écrire un avis</a>
+    </div>
+    <p>
+      Contact :
+      <a href="mailto:contact@autruche-compagnie.fr" style="color: #FFD966;">contact@autruche-compagnie.fr</a> |
+      Téléphone : 01 23 45 67 89
+    </p>
+    <p>
+      <a href="contact.html" style="color: #FFD966;">Contact</a> |
+      <a href="mentions-legales.html" style="color: #FFD966;">Mentions légales</a> |
+      <a href="cgu.html" style="color: #FFD966;">CGU</a>
+    </p>
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+  </footer>
+
+  
+  <script src="employee-dashboard.js"></script>
+  <!-- Script de login des employees -->
+   <script src="employeeLogin.js"></script>
+  <!-- Script de gestion des avis -->
+<script src="avis.js"></script>
+
+<!-- Script de déconnexion -->
+<script src="logout.js"></script>
+
+</body>
+</html>

@@ -1,3 +1,39 @@
+// Attache un écouteur à la soumission du formulaire
+document.getElementById("employee-form").addEventListener("submit", async function (event) {
+  event.preventDefault();
+
+  const firstName = document.getElementById("empFirstName").value;
+  const lastName = document.getElementById("empLastName").value;
+  const email = document.getElementById("empEmail").value;
+  const password = document.getElementById("empPassword").value;
+
+  const token = sessionStorage.getItem("jwt"); // 🔐 le token JWT de l’admin connecté
+
+  try {
+    const response = await fetch("/api/v1/admin/employees", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + token
+      },
+      body: JSON.stringify({ firstName, lastName, email, password })
+    });
+
+    if (response.ok) {
+      alert("✅ Employé créé avec succès !");
+      // Réinitialise le formulaire
+      document.getElementById("employee-form").reset();
+    } else {
+      const error = await response.text();
+      alert("❌ Erreur : " + error);
+    }
+  } catch (err) {
+    console.error("Erreur lors de la requête :", err);
+    alert("❌ Une erreur est survenue.");
+  }
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const omeletteList = document.getElementById("liste-omelette");
   const nourrirList = document.getElementById("liste-nourrir");
