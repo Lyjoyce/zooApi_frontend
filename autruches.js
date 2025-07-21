@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", async () => {
+/*document.addEventListener("DOMContentLoaded", async () => {
   const token = sessionStorage.getItem("jwt");
 
   if (!token) {

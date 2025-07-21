@@ -1,4 +1,4 @@
-    document.addEventListener("DOMContentLoaded", () => {
+  /*  document.addEventListener("DOMContentLoaded", () => {
   const firstName = sessionStorage.getItem("employeeFirstName");
   const lastName = sessionStorage.getItem("employeeLastName");
 
@@ -78,3 +78,4 @@
         button.textContent = "Valider";
       });
     }
+      */

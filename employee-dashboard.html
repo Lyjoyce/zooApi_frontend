@@ -4,16 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Validation des Avis - Employé</title>
-  <style>
-    body { font-family: Arial; padding: 2rem; }
-    table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
-    button { padding: 6px 12px; }
-    header img.logo { height: 60px; }
-    .nav-wrapper nav a { margin-right: 15px; }
-    footer { margin-top: 3rem; font-size: 0.9rem; text-align: center; }
-    .btn-footer-yellow, .btn-footer-pink { padding: 0.5rem 1rem; margin: 0.5rem; }
-  </style>
+  <link rel="stylesheet" href="dashboard.css">
+
 </head>
 <body>
 
@@ -64,23 +56,109 @@
     </div>
     <p>
       Contact :
-      <a href="mailto:contact@autruche-compagnie.fr" style="color: #FFD966;">contact@autruche-compagnie.fr</a> |
+      <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> |
       Téléphone : 01 23 45 67 89
     </p>
     <p>
-      <a href="contact.html" style="color: #FFD966;">Contact</a> |
-      <a href="mentions-legales.html" style="color: #FFD966;">Mentions légales</a> |
-      <a href="cgu.html" style="color: #FFD966;">CGU</a>
+      <a href="contact.html" >Contact</a> |
+      <a href="mentions-legales.html">Mentions légales</a> |
+      <a href="cgu.html">CGU</a>
     </p>
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
+  <script>
+  /*  document.addEventListener("DOMContentLoaded", () => {
+  const firstName = sessionStorage.getItem("employeeFirstName");
+  const lastName = sessionStorage.getItem("employeeLastName");
+
+  if (firstName && lastName) {
+    document.getElementById("employee-name").textContent =
+      `👋 Bonjour ${firstName} ${lastName}`;
+  }
+});
+
+    // Fonction exécutée au chargement de la page
+    document.addEventListener("DOMContentLoaded", () => {
+      const token = sessionStorage.getItem("token");
+
+      if (!token) {
+        alert("🔒 Veuillez vous connecter comme employé.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      fetch("/api/v1/avis", {
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        const table = document.getElementById("avisTableBody");
+        table.innerHTML = ""; // reset
+
+        const avisNonValidés = data.filter(avis => !avis.validated);
+
+        avisNonValidés.forEach(avis => {
+          const row = document.createElement("tr");
+
+          row.innerHTML = `
+            <td>${avis.firstName}</td>
+            <td>${new Date(avis.date).toLocaleString()}</td>
+            <td>${avis.note}</td>
+            <td>${avis.message || "(aucun message)"}</td>
+            <td>
+              <button onclick="validerAvis('${avis.id}', this)">Valider</button>
+            </td>
+          `;
+
+          table.appendChild(row);
+        });
+      })
+      .catch(err => {
+        console.error(err);
+        alert("Erreur lors du chargement des avis.");
+      });
+    });
+
+    // Fonction appelée lors du clic sur "Valider"
+    function validerAvis(avisId, button) {
+      const token = sessionStorage.getItem("token");
+
+      button.disabled = true;
+      button.textContent = "Validation...";
+
+      fetch(`/api/v1/employees/valider-avis/${avisId}`, {
+        method: "PUT",
+        headers: {
+          "Authorization": "Bearer " + token
+        }
+      })
+      .then(res => {
+        if (!res.ok) {
+          throw new Error("Erreur validation");
+        }
+        return res.json();
+      })
+      .then(() => {
+        alert("✅ Avis validé !");
+        location.reload(); // recharger la liste
+      })
+      .catch(err => {
+        console.error(err);
+        alert("❌ Une erreur est survenue.");
+        button.disabled = false;
+        button.textContent = "Valider";
+      });
+    }*/
+  </script>
   
-  <script src="employee-dashboard.js"></script>
-  <!-- Script de login des employees -->
-   <script src="employeeLogin.js"></script>
-  <!-- Script de gestion des avis -->
-<script src="avis.js"></script>
+  <!--<script src="employee-dashboard.js"></script>
+   Script de login des employees -->
+   <!--<script src="employeeLogin.js"></script>
+   Script de gestion des avis -->
+<!--<script src="avis.js"></script>-->
 
 <!-- Script de déconnexion -->
 <script src="logout.js"></script>

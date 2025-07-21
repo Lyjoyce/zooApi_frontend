@@ -27,8 +27,14 @@
       <!-- Rempli dynamiquement -->
     </tbody>
   </table>
-
+<!--
   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+  const firstName = sessionStorage.getItem("employeeFirstName");
+  const lastName = sessionStorage.getItem("employeeLastName");
+  if (firstName && lastName) {
+    document.getElementById("employee-name").textContent = `👋 Bonjour ${firstName} ${lastName}`;
+  }
     // Fonction exécutée au chargement de la page
     document.addEventListener("DOMContentLoaded", () => {
       const token = sessionStorage.getItem("token");
@@ -104,5 +110,6 @@
       });
     }
   </script>
+  -->
 </body>
 </html>

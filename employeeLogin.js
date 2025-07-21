@@ -1,4 +1,4 @@
-document.getElementById("login-form").addEventListener("submit", async (e) => {
+/*document.getElementById("login-form").addEventListener("submit", async (e) => {
   e.preventDefault();
 
   const email = document.getElementById("email").value.trim();
@@ -30,3 +30,4 @@ document.getElementById("login-form").addEventListener("submit", async (e) => {
     alert("❌ " + error.message);
   }
 });
+*/
