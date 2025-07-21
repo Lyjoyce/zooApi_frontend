@@ -56,7 +56,7 @@ header {
 
 /* Formulaire */
 form.ticket-form {
-  background-color: var(--jaune-savane);
+  background-color:#F4A300 ;
   border-radius: 12px;
   padding: 2rem;
   width: 100%;
@@ -74,10 +74,9 @@ form.ticket-form input[type="email"],
 form.ticket-form input[type="date"],
 form.ticket-form select {
   width: 100%;
-  padding: 0.6rem;
+  padding: 0.3rem;
   margin-top: 0.3rem;
   margin-bottom: 1rem;
-  border: 1px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
 }
@@ -117,7 +116,10 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #005f5f;
+  background-color: #005349;
+  color: #ffffff;
+  font-size: large;
+  font-weight: bolder;
 }
 
 /* Responsive */
