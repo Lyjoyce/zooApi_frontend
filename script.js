@@ -1,4 +1,3 @@
-
 function toggleTable() {
       const table = document.getElementById("ranch-table");
       if (table.style.display === "none" || table.style.display === "") {
@@ -7,11 +6,6 @@ function toggleTable() {
         table.style.display = "none";
       }
     }
-
-    
-  document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById('avis-form');
-
     // Vérifie si l'utilisateur est connecté (via token JWT)
     const token = sessionStorage.getItem("token"); // suppose que le token est stocké au login
 
@@ -23,8 +17,8 @@ function toggleTable() {
 
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const comment = document.getElementById('comment').value.trim();
-      const rating = parseInt(document.getElementById('rating').value);
+      const comment = document.getElementById('message').value.trim();
+      const rating = parseInt(document.getElementById('note').value);
 
       if (!comment || isNaN(rating)) {
         alert("Veuillez remplir tous les champs.");
@@ -38,7 +32,7 @@ function toggleTable() {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          body: JSON.stringify({ comment, rating })
+          body: JSON.stringify({ message, note })
         });
 
         if (response.ok) {
@@ -57,5 +51,4 @@ function toggleTable() {
         alert("Erreur de connexion au serveur.");
       }
     });
-  });
 

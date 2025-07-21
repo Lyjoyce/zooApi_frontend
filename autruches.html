@@ -1,13 +1,33 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <title>Autruches du Ranch</title>
-  <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="autruches.css">
 </head>
+
 <body>
-  
+
+  <header>
+    <a href="index.html" class="logo-home-link">
+      <img src="images/3.png" alt="Logo Ostrich Farmer">
+    </a>
+    <h1>Autruche & Compagnie</h1>
+    <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
+    <div class="nav-wrapper">
+      <nav class="top-nav">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#ferme">La Ferme</a>
+        <a href="index.html#ateliers">Ateliers</a>
+        <a href="index.html#inscription">Inscription</a>
+        <a href="index.html#ranchs">Ranchs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+
   <main>
     <h2> Autruches de la ferme</h2>
 
@@ -19,8 +39,8 @@
       <option value="Les Pondeuses">Les Pondeuses</option>
     </select>
 
-    <button id="filtre-combine">Filtre combiné (>3 ans, >100kg, ranch choisi)</button>
 
+    <button id="filtre-combine">Filtrer (âge > 3 & poids > 100)</button>
     <div id="autruches-container">Chargement...</div>
 
     <ul id="liste-autruches"></ul>
@@ -28,4 +48,5 @@
 
   <script src="autruches.js"></script>
 </body>
+
 </html>

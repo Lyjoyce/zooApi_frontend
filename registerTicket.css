@@ -1,0 +1,132 @@
+/* Charte graphique : vert canard, jaune savane, rose corail, noir */
+:root {
+  --vert-canard: #005349;
+  --jaune-savane: #F4A300;
+  --rose-corail: #FF6F61;
+  --noir: #000000;
+  --blanc: #ffffff;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--blanc);
+  color: var(--noir);
+  margin: 0;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
+}
+
+h1 {
+  color: white;
+  text-align: center;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.logo {
+  height: 60px;
+}
+
+.title {
+  font-size: 2rem;
+  color: var(--vert-canard);
+  font-weight: bold;
+}
+
+/* Formulaire */
+form.ticket-form {
+  background-color: var(--jaune-savane);
+  border-radius: 12px;
+  padding: 2rem;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+form.ticket-form label {
+  font-weight: bold;
+  color: var(--noir);
+}
+
+form.ticket-form input[type="text"],
+form.ticket-form input[type="email"],
+form.ticket-form input[type="date"],
+form.ticket-form select {
+  width: 100%;
+  padding: 0.6rem;
+  margin-top: 0.3rem;
+  margin-bottom: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+form.ticket-form fieldset {
+  border: 2px dashed var(--vert-canard);
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+}
+
+form.ticket-form legend {
+  font-weight: bold;
+  color: var(--vert-canard);
+  margin-bottom: 0.5rem;
+}
+
+form.ticket-form input[type="checkbox"] {
+  margin-right: 0.5rem;
+}
+
+#weekdayDisplay {
+  margin: 0.5rem 0 1rem;
+  font-weight: bold;
+  color: var(--rose-corail);
+}
+
+button[type="submit"] {
+  background-color: var(--vert-canard);
+  color: var(--blanc);
+  border: none;
+  padding: 0.8rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+button[type="submit"]:hover {
+  background-color: #005f5f;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  form.ticket-form {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 1.5rem;
+  }
+}

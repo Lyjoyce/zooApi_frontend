@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Validation des Avis - Employé</title>
-  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/employeeDashboard.css">
 </head>
 <body>
 
@@ -26,19 +26,24 @@
   </header>
 
   <main>
+
+    <button id="logout-button">Déconnexion</button>
+    
     <h2>Validation des Avis</h2>
+    <p id="employee-name" class="employee-greeting"></p>
 
     <table>
       <thead>
         <tr>
           <th>Prénom</th>
           <th>Date</th>
+          <th>Note</th>
           <th>Message</th>
           <th>Valider</th>
         </tr>
       </thead>
       <tbody id="avisTableBody">
-        <!-- Les avis non validés seront insérés ici -->
+        <!-- Les avis non validés seront insérés ici dynamiquement -->
       </tbody>
     </table>
   </main>
@@ -50,48 +55,17 @@
     </div>
     <p>
       Contact :
-      <a href="mailto:contact@autruche-compagnie.fr" style="color: #FFD966;">contact@autruche-compagnie.fr</a> |
+      <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> |
       Téléphone : 01 23 45 67 89
     </p>
     <p>
-      <a href="contact.html" style="color: #FFD966;">Contact</a> |
-      <a href="mentions-legales.html" style="color: #FFD966;">Mentions légales</a> |
-      <a href="cgu.html" style="color: #FFD966;">CGU</a>
+      <a href="contact.html">Contact</a> |
+      <a href="mentions-legales.html">Mentions légales</a> |
+      <a href="cgu.html">CGU</a>
     </p>
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
-  <script>
-    async function chargerAvis() {
-      const response = await fetch('/api/v1/avis/non-valides');
-      const avis = await response.json();
-      const tbody = document.getElementById('avisTableBody');
-      tbody.innerHTML = '';
-
-      avis.forEach(a => {
-        const row = document.createElement('tr');
-        row.innerHTML = `
-          <td>${a.firstName}</td>
-          <td>${new Date(a.date).toLocaleString()}</td>
-          <td>${a.message || '(Pas de message)'}</td>
-          <td><button onclick="validerAvis('${a.id}')">Valider</button></td>
-        `;
-        tbody.appendChild(row);
-      });
-    }
-
-    async function validerAvis(id) {
-      const response = await fetch(`/api/v1/employees/${id}/validate`, { method: 'PUT' });
-      if (response.ok) {
-        alert("Avis validé !");
-        chargerAvis(); // rafraîchir la liste
-      } else {
-        alert("Erreur lors de la validation.");
-      }
-    }
-
-    window.onload = chargerAvis;
-  </script>
-
+  <script src="js/avis-validation.js"></script> 
 </body>
 </html>

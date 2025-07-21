@@ -64,18 +64,19 @@ main {
   border-radius: 8px;
 }
 .btn{
-  padding: 5px;
+  padding: 0.6rem 1rem;
   text-decoration: none;
   color: #000;
-  font-weight: bold ;
-  background-color: #F4D35E;
+  background-color:#F4D35E;
   border-radius: 5px;
-  margin-right: 10px;
+  cursor: pointer;
 }
 
 .btn:hover{
-  background-color:#000 ;
-  color: #F4D35E;
+  text-decoration:underline;
+  font-weight: bolder;
+  background-color: #e6c54d;
+  color: #000;
 }
 
 h2 {
@@ -117,9 +118,8 @@ th {
 }
 
 button {
-  background-color: #F88379;
-  color: black;
-  font-weight: bold;
+  background-color: #005349;
+  color: #fff;
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 5px;
@@ -127,8 +127,8 @@ button {
 }
 
 button:hover {
-  background-color: #005349;
-  color: white;
+  text-decoration: underline;
+  font-weight: bolder;
 }
 
 footer {

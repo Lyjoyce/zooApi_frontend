@@ -1,55 +1,59 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("avis-form");
-  const token = sessionStorage.getItem("token");
+const verifForm = document.getElementById('verif-form');
+const avisForm = document.getElementById('avis-form');
+const statusDiv = document.getElementById('avis-status');
 
-  // 🔒 Vérifie que l'utilisateur est connecté
-  if (!token) {
-    alert("Vous devez être connecté pour laisser un avis.");
-    form.querySelector('button[type="submit"]').disabled = true;
-    return;
-  }
+let currentTicketId = null;
 
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+verifForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    // 📝 Récupération des valeurs du formulaire
-    const message = document.getElementById("message").value.trim();
-    const note = parseInt(document.getElementById("note").value);
+  const ticketNumber = document.getElementById('ticketNumber').value.trim();
+  const firstName = document.getElementById('firstName').value.trim();
+  const visitDate = document.getElementById('visitDate').value;
 
-    if (!message || isNaN(note)) {
-      alert("Veuillez remplir tous les champs.");
-      return;
-    }
-
-    const avisPayload = {
-      message: message,
-      note: note
-    };
-
-    try {
-      const response = await fetch("https://ton-backend/api/v1/avis", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": `Bearer ${token}`
-        },
-        body: JSON.stringify(avisPayload)
-      });
-
-      if (response.ok) {
-        alert("Merci pour votre avis ! Il sera publié après validation.");
-        form.reset();
-      } else if (response.status === 401) {
-        alert("Session expirée. Veuillez vous reconnecter.");
-        sessionStorage.removeItem("token");
-        window.location.href = "login.html";
-      } else {
-        const errorData = await response.json();
-        alert("Erreur : " + (errorData.message || "Impossible d’envoyer l’avis."));
-      }
-    } catch (error) {
-      console.error("Erreur réseau :", error);
-      alert("Erreur de connexion. Veuillez réessayer plus tard.");
-    }
+  const response = await fetch('/api/v1/avis/verification', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ ticketNumber, firstName, visitDate })
   });
+
+  if (response.ok) {
+    const data = await response.json();
+    currentTicketId = data.ticketId; // Pour associer l’avis au bon ticket
+    avisForm.style.display = 'block';
+    verifForm.style.display = 'none';
+    statusDiv.textContent = "🎉 Vérification réussie ! Vous pouvez maintenant laisser votre avis.";
+  } else {
+    const err = await response.text();
+    statusDiv.style.color = "red";
+    statusDiv.textContent = `❌ Vérification échouée : ${err}`;
+  }
+});
+
+avisForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const note = document.getElementById('note').value;
+  const message = document.getElementById('message').value.trim();
+
+  const response = await fetch('/api/v1/avis', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      ticketId: currentTicketId,
+      note,
+      message
+    })
+  });
+
+  if (response.ok) {
+    statusDiv.style.color = "green";
+    statusDiv.textContent = "✅ Merci pour votre avis ! Il sera publié après validation.";
+    avisForm.reset();
+    avisForm.style.display = 'none';
+  } else {
+    const err = await response.text();
+    statusDiv.style.color = "red";
+    statusDiv.textContent = `❌ Erreur lors de l’envoi : ${err}`;
+  }
 });

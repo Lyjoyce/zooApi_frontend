@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Les avis – Zoo Autruche</title>
+  <link rel="stylesheet" href="avis.css">
+</head>
+<body>
+  <header>
+    <a href="index.html" class="logo-home-link">
+      <img src="images/3.png" alt="Logo Ostrich Farmer">
+    </a>
+    <h1>Les Avis</h1>
+    <p class="slogan">Ce que les visiteurs disent de nous 🦩</p>
+  </header>
+
+  <main class="section">
+    <h2>Filtres</h2>
+    <label for="atelierFilter">Atelier :</label>
+    <select id="atelierFilter">
+      <option value="">Tous</option>
+      <option value="Omelette géante">Omelette géante</option>
+      <option value="Nourrir les autruches">Nourrir les autruches</option>
+    </select>
+
+    <label for="noteFilter">Note minimale :</label>
+    <select id="noteFilter">
+      <option value="0">Toutes</option>
+      <option value="5">5 ⭐</option>
+      <option value="4">4 ⭐ et plus</option>
+      <option value="3">3 ⭐ et plus</option>
+    </select>
+
+    <button id="filterButton">Filtrer</button>
+
+    <section id="avisList" class="avis-container">
+      <!-- Avis injectés ici -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 – Zoo Autruche & Compagnie</p>
+  </footer>
+
+  <script src="avis-publics.js"></script>
+</body>
+</html>
