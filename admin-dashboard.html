@@ -1,15 +1,16 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
-  <title>Dashboard Admin</title>
+  <title>Dashboard Administrateur</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/admin-dashboard.css">
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
 
-  <!-- Logo retour accueil -->
   <header>
     <a href="index.html" class="logo-home-link">
       <img src="images/3.png" alt="Logo Ostrich Farmer">
@@ -18,7 +19,7 @@
   </header>
 
   <main>
-    <!-- Création compte employé -->
+
     <section class="creation">
       <h2>Créer un compte employé</h2>
       <form id="employee-form">
@@ -30,34 +31,21 @@
       </form>
     </section>
 
-    <!-- Liste d’attente -->
     <section class="liste">
-      <h2>Les Ateliers</h2>
-
-      <div class="atelier">
-        <h3>Omelette géante</h3>
-        <ul id="liste-omelette"></ul>
-      </div>
-
-      <div class="atelier">
-        <h3>Nourrir les autruches</h3>
-        <ul id="liste-nourrir"></ul>
-      </div>
+      <h2>Inscriptions validées aux ateliers</h2>
+      <ul id="liste-inscriptions"></ul>
     </section>
 
-    <!-- Graphique ponte -->
     <section class="graphique">
       <h2>Ponte d'œufs cette semaine</h2>
       <canvas id="eggsChart" width="600" height="400"></canvas>
     </section>
 
-    <!-- Graphique ateliers -->
     <section class="graphique">
       <h2>Ateliers Omelette par jour</h2>
       <canvas id="workshopsChart" width="600" height="400"></canvas>
     </section>
 
-    <!-- Validation œufs vétérinaire -->
     <section class="validation-oeufs">
       <h2>Validation des œufs par le vétérinaire</h2>
       <table>
@@ -74,26 +62,25 @@
     </section>
   </main>
 
-  <!-- Pied de page -->
   <footer>
     <a href="index.html" class="logo-home-link">
       <img src="images/3.png" alt="Logo Ostrich Farmer">
     </a>
-    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
-    <p>Contact : <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> | Téléphone : 01 23 45 67 89</p>
-
     <div class="footer-buttons">
-      <p>
+      <a href="avis.html" class="btn-footer-yellow">Lire les avis</a>
+      <a href="laisser-avis.html" class="btn-footer-pink">Écrire un avis</a>
+    </div>
+    <p>Contact : <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> | Téléphone : 01 23 45 67 89</p>
+    <p>
         <a href="contact.html">Contact</a> |
         <a href="mentions-legales.html">Mentions légales</a> |
         <a href="cgu.html">CGU</a>
       </p>
-      <a href="avis.html" class="btn-footer-yellow">Lire les avis</a>
-      <a href="laisser-avis.html" class="btn-footer-pink">Écrire un avis</a>
-    </div>
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
   <script src="js/admin-dashboard.js"></script>
   <script src="js/avis-publics.js"></script>
 </body>
+
 </html>

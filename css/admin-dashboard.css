@@ -1,3 +1,4 @@
+/* ----------- Base ----------- */
 body {
   font-family: Calibri, sans-serif;
   background-color: #f2f2f2;
@@ -5,12 +6,24 @@ body {
   padding: 0;
 }
 
+main {
+  padding: 2rem;
+  max-width: 900px;
+  margin: auto;
+}
+
+h2 {
+  color: #000000;
+}
+
+/* ----------- Header ----------- */
 header {
   background-color: #005349;
   color: white;
   padding: 1rem;
   text-align: center;
 }
+
 .logo-home-link {
   display: block;
   text-align: center;
@@ -26,16 +39,7 @@ header {
   transform: scale(1.1);
 }
 
-main {
-  padding: 2rem;
-  max-width: 900px;
-  margin: auto;
-}
-
-h2 {
-  color: #000000;
-}
-
+/* ----------- Formulaire employé ----------- */
 form {
   background-color: #ffffff;
   padding: 1rem;
@@ -70,13 +74,7 @@ button:hover {
   background-color: #d96c66;
 }
 
-.atelier {
-  background-color: #F4D35E;
-  margin-top: 2rem;
-  padding: 1rem;
-  border-radius: 8px;
-}
-
+/* ----------- Inscriptions validées ----------- */
 ul {
   list-style-type: none;
   padding-left: 0;
@@ -89,6 +87,7 @@ li {
   border-radius: 4px;
 }
 
+/* ----------- Tableaux de validation ----------- */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -100,6 +99,8 @@ th, td {
   border: 1px solid #ccc;
   text-align: left;
 }
+
+/* ----------- Footer ----------- */
 footer {
   background-color: #000;
   color: white;
