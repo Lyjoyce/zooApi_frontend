@@ -151,7 +151,9 @@ footer .logo-home-link img {
 }
 
 .btn-footer-yellow:hover {
-  background-color: #e2c14f;
+  background-color: #F4D35E;
+  color: #000000;
+  text-decoration: underline;
 }
 
 .btn-footer-pink {
@@ -160,5 +162,7 @@ footer .logo-home-link img {
 }
 
 .btn-footer-pink:hover {
-  background-color: #d96c66;
+  background-color: #F88379;
+  color: #000000;
+  text-decoration: underline;
 }

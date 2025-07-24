@@ -1,50 +1,63 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Autruche & Compagnie</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
+
   <header>
+    <div class="dropdown ">
+  <button class="dropbtn ">Connexion</button>
+  <div class="dropdown-content">
+    <a href="employee-login.html">Employé</a>
+    <a href="admin-login.html">Admin</a>
+  </div>
+</div>
+
     <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo">
     <h1>Autruche & Compagnie</h1>
     <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
 
     <div class="nav-wrapper">
-    <nav class="top-nav">
-      <a href="#accueil">Accueil</a>
-      <a href="#ferme">La Ferme</a>
-      <a href="#ateliers">Ateliers</a>
-      <a href="#inscription">Inscription</a>
-      <a href="#ranchs">Ranchs</a>
-      <a href="#contact">Contact</a>
-    </nav>
-  </div>
+      <nav class="top-nav">
+        <a href="#accueil">Accueil</a>
+        <a href="#ferme">La Ferme</a>
+        <a href="#ateliers">Ateliers</a>
+        <a href="#inscription">Inscription</a>
+        <a href="#ranchs">Ranchs</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+
   </header>
 
   <main>
     <section id="accueil" class="section">
       <h2>Bienvenue chez Autruche & Compagnie</h2>
       <p>
-        Située au cœur de la nature, notre ferme pédagogique vous accueille pour une immersion ludique dans l’univers des autruches. 
-        Petits et grands découvriront ces fascinants oiseaux à travers des ateliers encadrés et adaptés au public scolaire.
+        Située au cœur de la nature, notre ferme pédagogique vous accueille pour une immersion ludique dans l’univers
+        des autruches.
+        Petits et grands découvriront ces fascinants oiseaux à travers des ateliers encadrés et adaptés au public
+        scolaire.
       </p>
       <div class="photos">
         <img src="images/bienvenu_photo.png" alt="Ferme Autruche 1 enfants_prof_veterinaire">
       </div>
       <div class="cta-buttons">
-        <a href="register.html" class="btn">S'inscrire</a>
-        <a href="login.html" class="btn">Se connecter</a>
+        <a href="registerTicket.html" class="btn">S'inscrire</a>
       </div>
     </section>
 
     <section id="ferme" class="section">
       <h2>Présentation de la ferme</h2>
       <p>
-        Notre ferme abrite une vingtaine d’autruches élevées en plein air. 
-        Vous pourrez observer leur comportement, comprendre leur mode de vie, 
+        Notre ferme abrite une vingtaine d’autruches élevées en plein air.
+        Vous pourrez observer leur comportement, comprendre leur mode de vie,
         et découvrir des anecdotes surprenantes sur ces oiseaux venus d’Afrique.
       </p>
       <div class="photos">
@@ -57,8 +70,10 @@
     <section id="ateliers" class="section">
       <h2>Les Ateliers Pédagogiques</h2>
       <ul>
-        <li><strong>“Omelette géante”</strong> – Préparez une omelette d’autruche si un œuf est disponible (vérification en direct du stock).</li>
-        <li><strong>“Nourrir les autruches”</strong> – Approchez les animaux et participez à leur alimentation en toute sécurité.</li>
+        <li><strong>“Omelette géante”</strong> – Préparez une omelette d’autruche si un œuf est disponible (vérification
+          en direct du stock).</li>
+        <li><strong>“Nourrir les autruches”</strong> – Approchez les animaux et participez à leur alimentation en toute
+          sécurité.</li>
         <li>Encadrement assuré par notre personnel qualifié.</li>
         <li>Un adulte pour 6 enfants minimum est requis pour chaque groupe.</li>
       </ul>
@@ -67,13 +82,12 @@
     <section id="inscription" class="section">
       <h2>Comment vous inscrire ?</h2>
       <p>
-        Les adultes responsables (professeurs ou accompagnateurs) peuvent créer un compte, 
+        Les adultes responsables (professeurs ou accompagnateurs) peuvent créer un compte,
         ajouter les enfants de leur groupe et réserver un ou plusieurs ateliers.
         Une fois la réservation confirmée, un email récapitulatif vous est envoyé.
       </p>
       <div class="cta-buttons">
-        <a href="register.html" class="btn">Créer un compte</a>
-        <a href="login.html" class="btn">Connexion</a>
+        <a href="registerTicket.html" class="btn">Réserver un atelier</a>
       </div>
     </section>
 
@@ -82,8 +96,8 @@
 
       <button onclick="toggleTable()">Afficher / Masquer les ranchs</button>
       <div style="margin-top: 1rem;">
-    <a href="autruches.html" class="btn">Voir nos autruches par ranch</a>
-  </div>
+        <a href="autruches.html" class="btn">Voir nos autruches par ranch</a>
+      </div>
       <div id="ranch-table" style="display: none; margin-top: 1rem;">
         <table>
           <thead>
@@ -97,7 +111,8 @@
             <tr>
               <td>Les Olympiques</td>
               <td>
-                Ranch dédié aux autruches les plus dynamiques. Il permet aux enfants d'observer la rapidité, la puissance des pattes, et la hiérarchie dans un groupe actif.
+                Ranch dédié aux autruches les plus dynamiques. Il permet aux enfants d'observer la rapidité, la
+                puissance des pattes, et la hiérarchie dans un groupe actif.
               </td>
               <td>
                 <ul>
@@ -110,7 +125,8 @@
             <tr>
               <td>Les Ballerines</td>
               <td>
-                Ranch calme destiné à l’étude du comportement reproducteur et des relations sociales. Les enfants découvrent la parade nuptiale et les soins portés aux œufs.
+                Ranch calme destiné à l’étude du comportement reproducteur et des relations sociales. Les enfants
+                découvrent la parade nuptiale et les soins portés aux œufs.
               </td>
               <td>
                 <ul>
@@ -123,7 +139,8 @@
             <tr>
               <td>Les Pondeuses</td>
               <td>
-                Ce ranch accueille les femelles en ponte. Il est lié à l’atelier « Omelette géante ». L’accès est limité pour préserver le calme et sensibiliser à la patience.
+                Ce ranch accueille les femelles en ponte. Il est lié à l’atelier « Omelette géante ». L’accès est limité
+                pour préserver le calme et sensibiliser à la patience.
               </td>
               <td>
                 <ul>
@@ -142,22 +159,25 @@
 
   <footer id="contact">
     <div class="footer-buttons">
-    <a href="/noticesReading.html" class="btn-footer-yellow">Lire les avis</a>
-    <a href="/notices.html" class="btn-footer-pink">Écrire un avis</a>
-  </div>
-    Contact : 
-    <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> | 
+      <a href="/avis-publics.html" class="btn-footer-yellow">Lire les avis</a>
+      <a href="/avis.html" class="btn-footer-pink">Écrire un avis</a>
+    </div>
+    Contact :
+    <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> |
     Téléphone : 01 23 45 67 89
-  </p>
-  <p>
-    <a href="contact.html">Contact</a> |
-    <a href="mentions-legales.html">Mentions légales</a> |
-    <a href="cgu.html">CGU</a>
-  </p>
-  <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
-  <p>
-</footer>
 
-<script src="script.js"></script>
+    <p>
+      <a href="contact.html">Contact</a> |
+      <a href="mentions-legales.html">Mentions légales</a> |
+      <a href="cgu.html">CGU</a>
+    </p>
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+  </footer>
+
+  <script src="js/global.js"></script>
+<script src="js/avis.js"></script>
+<script src="js/accueil.js"></script> <!-- uniquement sur index.html -->
+
 </body>
+
 </html>

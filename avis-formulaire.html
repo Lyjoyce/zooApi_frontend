@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Laisser un avis – Zoo Autruche</title>
-  <link rel="stylesheet" href="avis.css">
+  <link rel="stylesheet" href="css/avis-formulaire.css">
 </head>
+
 <body>
   <header>
     <a href="index.html" class="logo-home-link">
@@ -41,7 +43,12 @@
       <textarea id="message" placeholder="Votre avis..." required></textarea><br>
       <label for="note">Note :</label>
       <select id="note" required>
-        <option>5</option><option>4</option><option>3</option><option>2</option><option>1</option>
+        <option disabled selected value="">Choisissez une note</option>
+        <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
       </select><br>
       <button type="submit">Envoyer</button>
     </form>
@@ -61,6 +68,7 @@
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
-  <script src="avis.js"></script>
+  <script src="js/avis-formulaire.js"></script>
 </body>
+
 </html>

@@ -6,7 +6,7 @@
 
     // Charger les autruches depuis le fichier JSON
     async function chargerAutruches() {
-      const res = await fetch("autruches.json");
+      const res = await fetch("json/autruches.json");
       return await res.json();
     }
 

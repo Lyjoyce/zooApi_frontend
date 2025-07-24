@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 
   if (!token) {
     alert("🔒 Veuillez vous connecter comme employé.");
-    window.location.href = "login.html";
+    window.location.href = "employee-login.html";
     return;
   }
 

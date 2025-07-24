@@ -1,7 +1,16 @@
+/* #005349 #00796B #138D75 #F88379 #F66C64 #FB9893  #FFD966 #F4D35E  #F2F2F2*/
+/* --- Menu Burger Mobile --- */
+.account_svg{
+  width: 24px;
+  margin-left: 1rem;
+  border: solid 2px #FFD966;
+  background-color: #FFD966;
+}
+
 body {
   font-family: 'Calibri', sans-serif;
-  background-color: #FFFDF9;
-  color: #333;
+  background-color: #FFF;
+  color: #000;
   margin: 0;
   padding: 0;
   line-height: 1.6;
@@ -59,11 +68,12 @@ main {
 .section {
   margin-bottom: 2rem;
   padding: 1rem;
-  background-color: #fdfaf5;
-  border-left: 5px solid #138D75;
+  background-color: #F2F2F2;
+  border-left: 5px solid #00796B;
   border-radius: 8px;
 }
 .btn{
+  font-weight: bold;
   padding: 0.6rem 1rem;
   text-decoration: none;
   color: #000;
@@ -123,12 +133,13 @@ button {
   border: none;
   padding: 0.6rem 1rem;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
   cursor: pointer;
 }
 
 button:hover {
   text-decoration: underline;
-  font-weight: bolder;
+  font-weight: bold;
 }
 
 footer {
@@ -153,7 +164,7 @@ th, td {
 
 th {
   background-color: #005349;
-  color: white;
+  color: #fff;
 }
 
 ul {
@@ -178,7 +189,7 @@ ul {
 }
 
 .btn-footer-yellow:hover {
-  background-color: #f1c93a;
+  background-color: #F4D35E;
   color: #000;
 }
 
@@ -193,7 +204,7 @@ ul {
 }
 
 .btn-footer-pink:hover {
-  background-color: #e56c63;
+  background-color: #F66C64;
   color: #000;
 }
 footer a {
@@ -236,10 +247,59 @@ footer a:hover {
 }
 
 .btn-footer-pink:hover {
-  background-color: #e7716a;
+  background-color: #F66C64;
   color: #000;
   transform: scale(1.05);
   font-size: 1.05rem;
+}
+
+/* Menu déroulant de connexion */
+.dropdown {
+  position: absolute;
+  margin-left: 1rem;
+  right: 1rem; /* change to left: 1rem; if you want it on the left*/ 
+  z-index: 999;
+}
+
+.dropbtn {
+  color: #fff;
+  padding: 10px;
+  font-size:small;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  text-decoration: none;
+}
+
+.dropbtn:hover {
+  text-decoration: overline;
+}
+
+.dropdown-content {
+  display: none;
+  position: relative;
+  background-color: #fff;
+  min-width: 100px;
+  border-radius: 8px;
+  z-index: 1;
+  right: 0;
+}
+
+.dropdown-content a {
+  color: #000000;
+  padding: 8px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #000; 
+  color: #fff;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
 }
 
 @media (max-width: 480px){
@@ -247,7 +307,6 @@ footer a:hover {
   padding: 5px;
   text-decoration: none;
   color: #000;
-  font-weight: bold ;
   background-color: #F4D35E;
   border-radius: 5px;
   margin-right: 0px;
