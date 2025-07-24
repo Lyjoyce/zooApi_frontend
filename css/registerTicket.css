@@ -1,4 +1,4 @@
-/* Charte graphique : vert canard, jaune savane, rose corail, noir */
+/* Palette */
 :root {
   --vert-canard: #005349;
   --jaune-savane: #FFD966;
@@ -9,7 +9,7 @@
 
 body {
   font-family: 'Segoe UI', sans-serif;
-  background-color:#ffffff ;
+  background-color: var(--blanc);
   color: var(--noir);
   margin: 0;
   padding: 2rem;
@@ -17,10 +17,10 @@ body {
   flex-direction: column;
   align-items: center;
 }
-.logo-home-link {
-  display: block;
+
+header {
+  margin-bottom: 2rem;
   text-align: center;
-  margin: 1rem 0;
 }
 
 .logo-home-link img {
@@ -32,43 +32,68 @@ body {
   transform: scale(1.1);
 }
 
-h1 {
-  color: white;
-  text-align: center;
-}
-
-header {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 2rem;
-}
-
-.logo {
-  height: 60px;
-}
-
 .title {
   font-size: 2rem;
   color: var(--vert-canard);
   font-weight: bold;
+  margin-top: 2rem;
 }
-.atelier-table{
+
+.table-container {
+  overflow-x: auto;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.atelier-table {
+  width: 100%;
+  max-width: 800px;
+  border-collapse: collapse;
+  margin: auto;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.atelier-table th,
+.atelier-table td {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+.atelier-table thead {
+  background-color: var(--vert-canard);
+  color: var(--blanc);
+}
+
+.atelier-table tbody tr:nth-child(even) {
+  background-color: #fff;
+}
+
+.atelier-table tbody tr:nth-child(odd) {
   background-color: #FFD966;
+  color: #000000;
 }
+
+.atelier-table tr.pause {
+  background-color: #ccc;
+  font-style: italic;
+  color: #000000;
+}
+
 /* Formulaire */
 form.ticket-form {
-  background-color:#ffffff;
+  background-color: var(--blanc);
   border-radius: 12px;
   padding: 2rem;
   width: 100%;
   max-width: 500px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
 form.ticket-form label {
   font-weight: bold;
-  color: var(--noir);
+  display: block;
+  margin-top: 1rem;
 }
 
 form.ticket-form input[type="text"],
@@ -76,17 +101,17 @@ form.ticket-form input[type="email"],
 form.ticket-form input[type="date"],
 form.ticket-form select {
   width: 100%;
-  padding: 0.3rem;
+  padding: 0.5rem;
   margin-top: 0.3rem;
-  margin-bottom: 1rem;
   border-radius: 6px;
+  border: 1px solid #ccc;
   font-size: 1rem;
 }
 
 form.ticket-form fieldset {
   border: 2px dashed var(--vert-canard);
   padding: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1rem;
   border-radius: 8px;
 }
 
@@ -113,23 +138,54 @@ button[type="submit"] {
   padding: 0.8rem 1.5rem;
   font-size: 1rem;
   border-radius: 8px;
+  margin-top: 1.5rem;
   cursor: pointer;
   transition: background-color 0.3s;
 }
 
 button[type="submit"]:hover {
-  background-color: #005349;
-  color: #ffffff;
-  font-size: large;
-  font-weight: bolder;
+  background-color: #003f38;
 }
 
 @media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+  }
+
   form.ticket-form {
     padding: 1rem;
   }
 
-  .title {
-    font-size: 1.5rem;
+  .atelier-table th,
+  .atelier-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
+}
+@media (max-width: 320px){
+  .title {
+    font-size: 1 rem;
+  }
+
+  form.ticket-form {
+    padding: 0rem;
+  }
+
+  .atelier-table th,
+  .atelier-table td {
+    padding: 0.rem;
+    font-size: 0.7rem;
+  }
+
+  form.ticket-form input[type="text"],
+form.ticket-form input[type="email"],
+form.ticket-form input[type="date"],
+form.ticket-form select {
+  width: 100%;
+  padding: 0.5rem 0rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
 }

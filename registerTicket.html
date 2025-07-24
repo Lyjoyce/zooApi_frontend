@@ -2,50 +2,52 @@
 <html lang="fr">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>S'inscrire à Autruche & Compagnie</title>
-  <link rel="stylesheet" href="css/registerTicket.css">
+  <link rel="stylesheet" href="css/registerTicket.css" />
 </head>
 
 <body>
-
   <header>
     <a href="index.html" class="logo-home-link">
       <img src="images/3.png" alt="Logo Ostrich Farmer">
     </a>
   </header>
+
   <h2>Horaires des ateliers pédagogiques</h2>
-  <table class="atelier-table">
-    <thead>
-      <tr>
-        <th>Jour</th>
-        <th>Heure</th>
-        <th>Atelier</th>
-        <th>Capacité maximale</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Lundi, Mardi, Jeudi, Vendredi</td>
-        <td>10h00 – 11h30</td>
-        <td>Omelette géante</td>
-        <td>24 enfants (si œuf disponible)</td>
-      </tr>
-      <tr>
-        <td>-</td>
-        <td>11h30 – 13h20</td>
-        <td><em>Pause déjeuner (non réservable)</em></td>
-        <td>-</td>
-      </tr>
-      <tr>
-        <td>Lundi, Mardi, Jeudi, Vendredi</td>
-        <td>13h30 – 15h00</td>
-        <td>Nourrir les autruches</td>
-        <td>24 enfants</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="table-container">
+    <table class="atelier-table">
+      <thead>
+        <tr>
+          <th>Jour</th>
+          <th>Heure</th>
+          <th>Atelier</th>
+          <th>Capacité maximale</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Lundi, Mardi, Jeudi, Vendredi</td>
+          <td>10h00 – 11h30</td>
+          <td>Omelette géante</td>
+          <td>24 enfants (si œuf disponible)</td>
+        </tr>
+        <tr class="pause">
+          <td>-</td>
+          <td>11h30 – 13h20</td>
+          <td><em>Pause déjeuner (non réservable)</em></td>
+          <td>-</td>
+        </tr>
+        <tr>
+          <td>Lundi, Mardi, Jeudi, Vendredi</td>
+          <td>13h30 – 15h00</td>
+          <td>Nourrir les autruches</td>
+          <td>24 enfants</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <h1 class="title">Réserver un atelier scolaire</h1>
 
@@ -70,23 +72,19 @@
     <input type="date" id="visitDate" required>
     <p id="weekdayDisplay"></p>
 
+    <fieldset>
+      <legend>Choix des ateliers</legend>
+      <input type="checkbox" id="atelierMatin" value="OMELETTE">
+      <label for="atelierMatin">10h00 – 11h30 (Omelette géante)</label><br>
+
+      <input type="checkbox" id="atelierAprem" value="NOURRIR">
+      <label for="atelierAprem">13h30 – 15h00 (Nourrir les autruches)</label>
+    </fieldset>
 
     <button type="submit">Réserver</button>
   </form>
 
-
-
-
-  <fieldset>
-    <legend>Choix des ateliers</legend>
-    <input type="checkbox" id="atelierMatin" value="OMELETTE">
-    <label for="atelierMatin">10h00 – 11h30 (Omelette géante)</label><br>
-
-    <input type="checkbox" id="atelierAprem" value="NOURRIR">
-    <label for="atelierAprem">13h30 – 15h00 (Nourrir les autruches)</label>
-  </fieldset>
-
-  <button type="submit">Réserver</button>
-
   <script src="js/registerTicket.js"></script>
 </body>
+
+</html>
