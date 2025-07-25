@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Validation des Avis - Employé</title>
-  <link rel="stylesheet" href="css/employee-dashboard.css">
+  <link rel="stylesheet" href="css/employee-dashboard.css" />
+  <link rel="stylesheet" href="css/ponteGraph.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body>
 
+<body>
   <header>
-    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo">
+    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo" />
     <h1>Autruche & Compagnie</h1>
     <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
 
@@ -26,9 +28,9 @@
   </header>
 
   <main>
-
     <button id="logout-button">Déconnexion</button>
-    
+
+    <section>
     <h2>Validation des Avis</h2>
     <p id="employee-name" class="employee-greeting"></p>
 
@@ -43,15 +45,22 @@
         </tr>
       </thead>
       <tbody id="avisTableBody">
-        <!-- Les avis non validés seront insérés ici dynamiquement -->
+        <!-- Avis non validés -->
       </tbody>
     </table>
+    </section> 
+
+    <!-- SECTION GRAPHIQUE DE PONTE -->
+    <section class="graph-section">
+      <h2>Ponte d'œufs cette semaine</h2>
+      <canvas id="eggsChart" width="600" height="400"></canvas>
+    </section>
   </main>
 
   <footer id="contact">
     <div class="footer-buttons">
-      <a href="/noticesReading.html" class="btn-footer-yellow">Lire les avis</a>
-      <a href="/notices.html" class="btn-footer-pink">Écrire un avis</a>
+      <a href="/avis-publics.html" class="btn-footer-yellow">Lire les avis</a>
+      <a href="/avis-formulaire.html" class="btn-footer-pink">Écrire un avis</a>
     </div>
     <p>
       Contact :
@@ -66,7 +75,9 @@
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
-  <script src="js/avis-validation.js"></script>
-  <script src="js/logout.js"></script> 
+  <script src=""></script>
+
+  <script src="js/logout.js"></script>
+  <script src="js/ponteGraph.js"></script>
 </body>
 </html>

@@ -1,7 +1,30 @@
+.graph-section {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #fdfaf5;
+  border-left: 5px solid #138D75;
+  border-radius: 8px;
+}
+
+.graph-section h2 {
+  color: #005349;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.graph-section canvas {
+  width: 100% !important;
+  max-width: 800px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/*
 body {
   font-family: Arial, sans-serif;
   background-color: #f9f9f9;
-  color: #000000; /* Noir */
+  color: #000000; 
   padding: 2rem;
   margin: 0;
 }
@@ -12,7 +35,7 @@ header {
 }
 
 h1 {
-  color: #138D75; /* Vert canard */
+  color: #138D75; 
 }
 
 main {
@@ -22,8 +45,9 @@ main {
 
 canvas {
   background-color: #ffffff;
-  border: 3px solid #F88379; /* Rose corail */
+  border: 3px solid #F88379; 
   border-radius: 12px;
   padding: 1rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
+  */
