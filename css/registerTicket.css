@@ -6,6 +6,9 @@
   --noir: #000000;
   --blanc: #ffffff;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   font-family: 'Segoe UI', sans-serif;
@@ -161,4 +164,18 @@ button[type="submit"]:hover {
     padding: 0.5rem;
     font-size: 0.9rem;
   }
+}
+
+@media (max-width: 320px){
+form.ticket-form input[type="text"],
+form.ticket-form input[type="email"],
+form.ticket-form input[type="date"],
+form.ticket-form select {
+  width: 100%;
+  padding: 0rem;
+  margin-top: 0.3rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 1rem;
+}
 }

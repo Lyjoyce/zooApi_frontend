@@ -2,7 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("ticketForm");
   const visitDateInput = document.getElementById("visitDate");
   const weekdayDisplay = document.getElementById("weekdayDisplay");
+  const nbEnfants = document.getElementById("nbEnfants");
+  const nbAdultes = document.getElementById("nbAdultes");
 
+  // Affichage du jour de la semaine + vérification
   visitDateInput.addEventListener("input", () => {
     const date = new Date(visitDateInput.value);
     const day = date.getDay(); // 0 = dimanche, ..., 6 = samedi
@@ -19,16 +22,38 @@ document.addEventListener("DOMContentLoaded", () => {
     weekdayDisplay.style.color = "green";
   });
 
+  // Vérification du ratio adulte/enfant
+  function checkRatio() {
+    const enfants = parseInt(nbEnfants.value, 10);
+    const adultes = parseInt(nbAdultes.value, 10);
+
+    if (adultes > 0 && enfants > 0 && enfants / adultes > 6) {
+      alert("Le nombre d'adultes est insuffisant : 1 adulte pour 6 enfants maximum.");
+    }
+  }
+
+  nbEnfants.addEventListener('blur', checkRatio);
+  nbAdultes.addEventListener('blur', checkRatio);
+
+  // Soumission du formulaire
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
     const firstName = document.getElementById("firstName").value.trim();
     const lastName = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim();
+    const adultType = document.getElementById("adultType").value;
     const visitDate = visitDateInput.value;
+    const enfants = parseInt(nbEnfants.value, 10);
+    const adultes = parseInt(nbAdultes.value, 10);
 
-    if (!firstName || !lastName || !email || !visitDate) {
+    if (!firstName || !lastName || !email || !visitDate || !adultType || !enfants || !adultes) {
       alert("Tous les champs sont requis.");
+      return;
+    }
+
+    if (enfants / adultes > 6) {
+      alert("Le nombre d'adultes est insuffisant : 1 adulte pour 6 enfants maximum.");
       return;
     }
 
@@ -53,48 +78,12 @@ document.addEventListener("DOMContentLoaded", () => {
       firstName,
       lastName,
       email,
-      AdultType,
+      adultType,
       visitDate,
       dayOfWeek,
+      nbEnfants: enfants,
+      nbAdultes: adultes,
       ateliers
-    };
-
-    try {
-      const response = await fetch("https://ton-api.com/api/v1/tickets/register", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(requestBody)
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        alert(`Réservation confirmée ! Numéro : ${result.ticketNumber}`);
-        form.reset();
-        weekdayDisplay.textContent = "";
-      } else {
-        const error = await response.text();
-        alert(`Erreur lors de la réservation : ${error}`);
-      }
-    } catch (err) {
-      alert("Erreur réseau : impossible de contacter le serveur.");
-      console.error(err);
-    }
-  });
-});
-document.addEventListener("DOMContentLoaded", () => {
-  const form = document.getElementById("ticketForm");
-
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
-
-    const requestBody = {
-      firstName: document.getElementById("firstName").value.trim(),
-      lastName: document.getElementById("lastName").value.trim(),
-      email: document.getElementById("email").value.trim(),
-      type: document.getElementById("adultType").value,
-      visitDate: document.getElementById("visitDate").value
     };
 
     try {
@@ -104,11 +93,15 @@ document.addEventListener("DOMContentLoaded", () => {
         body: JSON.stringify(requestBody)
       });
 
-      if (!response.ok) throw new Error("Erreur lors de la réservation");
+      if (!response.ok) {
+        const error = await response.text();
+        throw new Error(error || "Erreur lors de la réservation");
+      }
 
       const result = await response.json();
       alert("Réservation réussie ! Numéro : " + result.ticketNumber);
       form.reset();
+      weekdayDisplay.textContent = "";
 
     } catch (err) {
       console.error("Erreur :", err);
@@ -116,4 +109,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-

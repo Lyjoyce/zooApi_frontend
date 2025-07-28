@@ -49,7 +49,7 @@
     </table>
   </div>
 
-  <h1 class="title">Réserver un atelier scolaire</h1>
+  <h1 class="title" id="reservation-atelier">Réserver un atelier scolaire</h1>
 
   <form id="ticketForm" class="ticket-form">
     <label for="firstName">Prénom</label>
@@ -72,7 +72,20 @@
     <input type="date" id="visitDate" required>
     <p id="weekdayDisplay"></p>
 
-    <fieldset>
+    <fieldset id="informations-groupe">
+  <legend>Informations sur le groupe scolaire</legend>
+
+  <label for="nbEnfants">Nombre d’enfants participants :</label>
+  <input type="number" id="nbEnfants" name="nbEnfants" min="1" required>
+
+  <label for="nbAdultes">Nombre total d’adultes accompagnateurs (y compris vous) :</label>
+  <input type="number" id="nbAdultes" name="nbAdultes" min="1" required>
+
+  <p>⚠️ Un adulte est requis pour 6 enfants maximum. Merci de respecter ce ratio lors de votre réservation.</p>
+</fieldset>
+
+
+    <fieldset id="choix-ateliers">
       <legend>Choix des ateliers</legend>
       <input type="checkbox" id="atelierMatin" value="OMELETTE">
       <label for="atelierMatin">10h00 – 11h30 (Omelette géante)</label><br>
