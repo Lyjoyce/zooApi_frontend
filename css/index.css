@@ -81,7 +81,7 @@ main {
 .btn:hover{
   text-decoration:underline;
   font-weight: bolder;
-  background-color: #e6c54d;
+  background-color: #FB9893;
   color: #000;
 }
 
@@ -200,11 +200,11 @@ ul {
 }
 
 .btn-footer-pink:hover {
-  background-color: #F66C64;
+  background-color:#FB9893;
   color: #000;
 }
 footer a {
-  color: #F88379;
+  color: #FB9893;
   text-decoration: none;
   font-weight: bold;
 }
@@ -231,7 +231,7 @@ footer a:hover {
 }
 
 .btn-footer-yellow:hover {
-  background-color: #e6c54d;
+  background-color: #FFF;
   color: #000;
   transform: scale(1.05);
   font-size: 1.05rem;
@@ -243,7 +243,7 @@ footer a:hover {
 }
 
 .btn-footer-pink:hover {
-  background-color: #F66C64;
+  background-color: #FFF;
   color: #000;
   transform: scale(1.05);
   font-size: 1.05rem;
@@ -307,5 +307,4 @@ footer a:hover {
   border-radius: 5px;
   margin-right: 0px;
 }
-
 }
