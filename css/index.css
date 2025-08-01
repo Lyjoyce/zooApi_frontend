@@ -138,13 +138,7 @@ button:hover {
   font-weight: bold;
 }
 
-footer {
-  text-align: center;
-  background-color: #000;
-  color: #fff;
-  padding: 1rem;
-  font-size: 0.9rem;
-}
+
 table {
   width: 100%;
   border-collapse: collapse;
@@ -165,6 +159,13 @@ th {
 
 ul {
   padding-left: 1.2rem;
+}
+footer {
+  text-align: center;
+  background-color: #000;
+  color: #fff;
+  padding: 1rem;
+  font-size: 0.9rem;
 }
 .footer-buttons {
   margin-top: 1rem;
