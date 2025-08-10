@@ -1,13 +1,27 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #F2F2F2; /* jaune clair pour SEO et lisibilité */
+  color: #000000; /* texte noir */
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  text-align: center;
+  padding: 1rem;
+  background-color: #FFD966; /* jaune plus vif pour l’en-tête */
+  color: #000000;
+}
 .graph-section {
   margin-top: 2rem;
   padding: 1rem;
-  background-color: #fdfaf5;
-  border-left: 5px solid #138D75;
+  background-color: #000;
+  color: #000;
   border-radius: 8px;
 }
 
 .graph-section h2 {
-  color: #005349;
+  color: #000;
   margin-bottom: 1rem;
   font-size: 1.4rem;
 }
@@ -19,7 +33,6 @@
   display: block;
   margin: 0 auto;
 }
-
 /*
 body {
   font-family: Arial, sans-serif;

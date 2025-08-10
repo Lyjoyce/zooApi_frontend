@@ -7,8 +7,8 @@ const eggsChart = new Chart(ctx, {
     datasets: [{
       label: 'Œufs pondus',
       data: [2, 1, 4, 0, 3], // À remplacer dynamiquement si besoin
-      backgroundColor: '#F4D35E', // Jaune savane
-      borderColor: '#F4D35E',
+      backgroundColor: '#000', // Jaune savane
+      borderColor: '#000',
       borderWidth: 1
     }]
   },
@@ -20,7 +20,7 @@ const eggsChart = new Chart(ctx, {
         font: {
           size: 20
         },
-        color: '#138D75' // Vert canard
+        color: '#000' // noir
       },
       legend: {
         labels: {
