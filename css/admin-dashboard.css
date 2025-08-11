@@ -1,7 +1,7 @@
 /* ----------- Base ----------- */
 body {
   font-family: Calibri, sans-serif;
-  background-color: #f2f2f2;
+  background-color: #FFF;
   margin: 0;
   padding: 0;
 }
@@ -41,7 +41,7 @@ header {
 
 /* ----------- Formulaire employé ----------- */
 form {
-  background-color: #ffffff;
+  background-color: #F2F2F2;
   padding: 1rem;
   border-radius: 10px;
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
@@ -71,20 +71,8 @@ button {
 }
 
 button:hover {
-  background-color: #d96c66;
-}
-
-/* ----------- Inscriptions validées ----------- */
-ul {
-  list-style-type: none;
-  padding-left: 0;
-}
-
-li {
-  background-color: #fff;
-  margin-bottom: 0.5rem;
-  padding: 0.5rem;
-  border-radius: 4px;
+  background-color: #000;
+  color: #d96c66;
 }
 
 /* ----------- Tableaux de validation ----------- */

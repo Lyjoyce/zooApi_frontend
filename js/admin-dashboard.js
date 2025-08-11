@@ -49,7 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
       datasets: [{
         label: 'Œufs pondus',
         data: [3, 4, 2, 5, 6, 1, 0],
-        backgroundColor: '#F88379'
+        backgroundColor: '#000',
+        color: '#000'
       }]
     },
     options: { responsive: true, plugins: { legend: { display: false } } }

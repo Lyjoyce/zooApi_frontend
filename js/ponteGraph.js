@@ -7,7 +7,7 @@ const eggsChart = new Chart(ctx, {
     datasets: [{
       label: 'Œufs pondus',
       data: [2, 1, 4, 0, 3], // À remplacer dynamiquement si besoin
-      backgroundColor: '#000', // Jaune savane
+      backgroundColor: '#000', 
       borderColor: '#000',
       borderWidth: 1
     }]
@@ -20,7 +20,7 @@ const eggsChart = new Chart(ctx, {
         font: {
           size: 20
         },
-        color: '#000' // noir
+        color: '#138D75' // noir
       },
       legend: {
         labels: {
@@ -34,17 +34,17 @@ const eggsChart = new Chart(ctx, {
         title: {
           display: true,
           text: "Nombre d'œufs",
-          color: '#000000'
+          color: '#000'
         },
         ticks: {
-          color: '#000000'
+          color: '#000'
         }
       },
       x: {
         title: {
           display: true,
           text: "Jour de la semaine",
-          color: '#000000'
+          color: '#000'
         },
         ticks: {
           color: '#000000'
