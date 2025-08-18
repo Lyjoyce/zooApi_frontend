@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Vétérinaire - Autruche & Compagnie</title>
+  <link rel="stylesheet" href="css/veto.css" />
+  <link rel="stylesheet" href="css/ponteGraph.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo" />
+    <h1>Autruche & Compagnie - Dashboard Vétérinaire</h1>
+    <nav class="top-nav">
+      <a href="/index.html#accueil">Accueil</a>
+      <a href="/index.html#ferme">La Ferme</a>
+      <a href="/index.html#ateliers">Ateliers</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <button id="logout-button">Déconnexion</button>
+  </header>
+
+  <main>
+    <!-- FORMULAIRE ENREGISTREMENT ŒUF -->
+    <section>
+      <h2>Enregistrer un œuf</h2>
+      <form id="eggForm">
+        <label for="ostrichId">ID de l’autruche :</label>
+        <input type="number" id="ostrichId" required>
+
+        <label for="dateLaid">Date de ponte :</label>
+        <input type="date" id="dateLaid" required>
+
+        <button type="submit">Enregistrer l’œuf</button>
+      </form>
+    </section>
+
+    <!-- TABLE DES ŒUFS -->
+    <section>
+      <h2>Œufs prêts pour les ateliers</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>ID Œuf</th>
+            <th>Date de ponte</th>
+            <th>Autruche</th>
+            <th>Validé par vétérinaire</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody id="eggsTableBody"></tbody>
+      </table>
+    </section>
+
+    <!-- GRAPHIQUE DE PONTE -->
+    <section class="graph-section">
+      <h2>Ponte d'œufs cette semaine</h2>
+      <canvas id="eggsChart" width="600" height="400"></canvas>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+  </footer>
+
+<script>
+  // Déconnexion
+  document.getElementById('logout-button').addEventListener('click', () => {
+    localStorage.clear();
+    window.location.href = '/index.html';
+  });
+
+  // Enregistrement œuf via formulaire
+  document.getElementById('eggForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+    const ostrichId = parseInt(document.getElementById('ostrichId').value);
+    const dateLaid = document.getElementById('dateLaid').value;
+
+    try {
+      const response = await fetch('http://localhost:8080/api/v1/eggs', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ dateLaid, ostrich: { id: ostrichId } })
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        alert(`Œuf enregistré avec succès (ID: ${data.id}) !`);
+        document.getElementById('eggForm').reset();
+        loadEggs();
+        loadEggsChart();
+      } else {
+        alert('Erreur lors de l’enregistrement de l’œuf.');
+      }
+    } catch (err) {
+      console.error(err);
+      alert('Impossible de contacter le serveur.');
+    }
+  });
+
+  // Charger œufs
+  async function loadEggs() {
+    try {
+      const response = await fetch('/api/v1/veto/valid'); // endpoint backend
+      const eggs = await response.json();
+      const tbody = document.getElementById('eggsTableBody');
+      tbody.innerHTML = '';
+      eggs.forEach(egg => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td>${egg.id}</td>
+          <td>${new Date(egg.datePonte).toLocaleDateString()}</td>
+          <td>${egg.ostrichId || egg.femaleId}</td>
+          <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
+          <td>
+            ${!egg.validatedByVet ? `<button onclick="validateEgg(${egg.id})">Valider</button>` : ''}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+    } catch (err) {
+      console.error('Erreur chargement œufs :', err);
+    }
+  }
+
+  // Validation œuf
+  async function validateEgg(eggId) {
+    try {
+      const response = await fetch(`/api/v1/veto/validate/${eggId}`, { method: 'POST' });
+      if (response.ok) {
+        alert('Œuf validé avec succès !');
+        loadEggs();
+      } else {
+        alert('Erreur lors de la validation');
+      }
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
+  // Graphique ponte
+  async function loadEggsChart() {
+    try {
+      const response = await fetch('/api/v1/eggs/weekly'); // endpoint backend
+      const data = await response.json();
+      const ctx = document.getElementById('eggsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: { labels: data.labels, datasets: [{ label: "Œufs pondus", data: data.values, backgroundColor: '#F4D35E' }] },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+      });
+    } catch (err) {
+      console.error('Erreur chargement graphique :', err);
+    }
+  }
+
+  // Initialisation
+  loadEggs();
+  loadEggsChart();
+</script>
+</body>
+</html>

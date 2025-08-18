@@ -1,0 +1,205 @@
+/* =========================================================
+   Dashboard Commun - Employé & Vétérinaire
+   Fichier : dashboard.css
+   Optimisé pour VS Code, Visualisation responsive
+   ========================================================= */
+
+/* ---------- Reset & Base ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Calibri', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Calibri', sans-serif;
+  background-color: #FFF;
+  color: #000;
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+header {
+  background-color: #005349;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+  margin-bottom: 10px;
+}
+.nav-wrapper {
+  background-color: #F4D35E;
+  border: 2px solid #F4D35E;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* ---------- Boutons ---------- */
+button, .btn-footer-yellow, .btn-footer-pink {
+  border: none;
+  padding: 8px 14px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover, .btn-footer-yellow:hover, .btn-footer-pink:hover {
+  transform: scale(1.05);
+}
+
+#logout-button {
+  background-color: #F88379;
+  color: #000;
+  margin: 15px;
+}
+
+.btn-footer-yellow {
+  background-color: #F4D35E;
+  color: #005349;
+  margin: 5px;
+}
+
+.btn-footer-pink {
+  background-color: #F88379;
+  color: #fff;
+  margin: 5px;
+}
+
+/* ---------- Sections ---------- */
+main {
+  padding: 20px;
+}
+
+section {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  color: #005349;
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+thead th {
+  background-color: #005349;
+  color: #ffffff;
+  padding: 10px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F2F2F2;
+}
+
+tbody button {
+  background-color: #F4D35E;
+  color: #005349;
+  font-weight: bold;
+}
+
+/* ---------- Graphiques ---------- */
+.graph-section {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+canvas {
+  width: 100% !important;
+  max-width: 600px;
+  height: auto !important;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #005349;
+  color: #ffffff;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #F4D35E;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Palette de Couleurs Utilisées ---------- */
+.color-palette {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.color-palette th, .color-palette td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.color-box {
+  width: 60px;
+  height: 30px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
