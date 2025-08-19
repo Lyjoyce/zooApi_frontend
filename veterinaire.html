@@ -8,7 +8,6 @@
   <link rel="stylesheet" href="css/ponteGraph.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-
 <body>
   <header>
     <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo" />
@@ -23,21 +22,7 @@
   </header>
 
   <main>
-    <!-- FORMULAIRE ENREGISTREMENT ŒUF -->
-    <section>
-      <h2>Enregistrer un œuf</h2>
-      <form id="eggForm">
-        <label for="ostrichId">ID de l’autruche :</label>
-        <input type="number" id="ostrichId" required>
-
-        <label for="dateLaid">Date de ponte :</label>
-        <input type="date" id="dateLaid" required>
-
-        <button type="submit">Enregistrer l’œuf</button>
-      </form>
-    </section>
-
-    <!-- TABLE DES ŒUFS -->
+    <!-- SECTION ŒUFS VALIDÉS ET NON UTILISÉS -->
     <section>
       <h2>Œufs prêts pour les ateliers</h2>
       <table>
@@ -46,6 +31,7 @@
             <th>ID Œuf</th>
             <th>Date de ponte</th>
             <th>Autruche</th>
+            <th>Atelier associé</th>
             <th>Validé par vétérinaire</th>
             <th>Actions</th>
           </tr>
@@ -54,7 +40,31 @@
       </table>
     </section>
 
-    <!-- GRAPHIQUE DE PONTE -->
+    <!-- FORMULAIRE 1 : ENREGISTREMENT D'ŒUF -->
+    <section>
+      <h2>Enregistrer un nouvel œuf</h2>
+      <form id="eggForm">
+        <label for="ostrichId">ID de l’autruche :</label>
+        <input type="number" id="ostrichId" required>
+        <label for="dateLaid">Date de ponte :</label>
+        <input type="date" id="dateLaid" required>
+        <button type="submit">Enregistrer l’œuf</button>
+      </form>
+    </section>
+
+    <!-- FORMULAIRE 2 : ASSOCIATION D'ATELIER -->
+    <section>
+      <h2>Associer un œuf à un atelier</h2>
+      <form id="assignForm">
+        <label for="eggIdAssign">ID de l’œuf :</label>
+        <input type="number" id="eggIdAssign" required>
+        <label for="atelierName">Nom de l’atelier :</label>
+        <input type="text" id="atelierName" required>
+        <button type="submit">Associer à l’atelier</button>
+      </form>
+    </section>
+
+    <!-- SECTION GRAPHIQUE DE PONTE -->
     <section class="graph-section">
       <h2>Ponte d'œufs cette semaine</h2>
       <canvas id="eggsChart" width="600" height="400"></canvas>
@@ -65,100 +75,134 @@
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
-<script>
-  // Déconnexion
-  document.getElementById('logout-button').addEventListener('click', () => {
-    localStorage.clear();
-    window.location.href = '/index.html';
-  });
+  <script>
+    // Déconnexion
+    document.getElementById('logout-button').addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = '/index.html';
+    });
 
-  // Enregistrement œuf via formulaire
-  document.getElementById('eggForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
-    const ostrichId = parseInt(document.getElementById('ostrichId').value);
-    const dateLaid = document.getElementById('dateLaid').value;
+    // --- Gestion des œufs ---
+    let eggsData = [];
 
-    try {
-      const response = await fetch('http://localhost:8080/api/v1/eggs', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ dateLaid, ostrich: { id: ostrichId } })
-      });
-
-      if (response.ok) {
-        const data = await response.json();
-        alert(`Œuf enregistré avec succès (ID: ${data.id}) !`);
-        document.getElementById('eggForm').reset();
-        loadEggs();
-        loadEggsChart();
-      } else {
-        alert('Erreur lors de l’enregistrement de l’œuf.');
+    async function loadEggs() {
+      try {
+        const response = await fetch('/json/eggs.json');
+        eggsData = await response.json();
+        renderEggsTable();
+        renderEggsChart();
+      } catch (err) {
+        console.error('Erreur chargement œufs :', err);
       }
-    } catch (err) {
-      console.error(err);
-      alert('Impossible de contacter le serveur.');
     }
-  });
 
-  // Charger œufs
-  async function loadEggs() {
-    try {
-      const response = await fetch('/api/v1/veto/valid'); // endpoint backend
-      const eggs = await response.json();
+    function renderEggsTable() {
       const tbody = document.getElementById('eggsTableBody');
       tbody.innerHTML = '';
-      eggs.forEach(egg => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
-          <td>${egg.id}</td>
-          <td>${new Date(egg.datePonte).toLocaleDateString()}</td>
-          <td>${egg.ostrichId || egg.femaleId}</td>
-          <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
-          <td>
-            ${!egg.validatedByVet ? `<button onclick="validateEgg(${egg.id})">Valider</button>` : ''}
-          </td>
-        `;
-        tbody.appendChild(tr);
+      eggsData.forEach(egg => {
+        if (egg.active && !egg.used) {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${egg.id}</td>
+            <td>${new Date(egg.dateLaid).toLocaleDateString()}</td>
+            <td>${egg.femaleId}</td>
+            <td>${egg.atelier || '-'}</td>
+            <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
+            <td>
+              <button onclick="validateEgg(${egg.id})">Valider</button>
+              <button onclick="markUsed(${egg.id})">Marquer utilisé</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        }
       });
-    } catch (err) {
-      console.error('Erreur chargement œufs :', err);
     }
-  }
 
-  // Validation œuf
-  async function validateEgg(eggId) {
-    try {
-      const response = await fetch(`/api/v1/veto/validate/${eggId}`, { method: 'POST' });
-      if (response.ok) {
-        alert('Œuf validé avec succès !');
-        loadEggs();
-      } else {
-        alert('Erreur lors de la validation');
+    function validateEgg(id) {
+      const egg = eggsData.find(e => e.id === id);
+      if (egg) {
+        egg.validatedByVet = true;
+        alert(`Œuf ${id} validé pour consommation.`);
+        renderEggsTable();
       }
-    } catch (err) {
-      console.error(err);
     }
-  }
 
-  // Graphique ponte
-  async function loadEggsChart() {
-    try {
-      const response = await fetch('/api/v1/eggs/weekly'); // endpoint backend
-      const data = await response.json();
+    function markUsed(id) {
+      const egg = eggsData.find(e => e.id === id);
+      if (egg) {
+        egg.used = true;
+        alert(`Œuf ${id} marqué comme utilisé pour un atelier.`);
+        renderEggsTable();
+      }
+    }
+
+    // --- Formulaire 1 : Enregistrement œuf ---
+    document.getElementById('eggForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const ostrichId = parseInt(document.getElementById('ostrichId').value);
+      const dateLaid = document.getElementById('dateLaid').value;
+
+      const newEgg = {
+        id: eggsData.length + 1,
+        femaleId: ostrichId,
+        dateLaid: dateLaid,
+        active: true,
+        used: false,
+        validatedByVet: false,
+        atelier: ""
+      };
+
+      eggsData.push(newEgg);
+      alert(`Œuf enregistré avec succès (ID: ${newEgg.id}) !`);
+      document.getElementById('eggForm').reset();
+      renderEggsTable();
+      renderEggsChart();
+    });
+
+    // --- Formulaire 2 : Association atelier ---
+    document.getElementById('assignForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const eggId = parseInt(document.getElementById('eggIdAssign').value);
+      const atelier = document.getElementById('atelierName').value.trim();
+      const egg = eggsData.find(e => e.id === eggId);
+      if (egg) {
+        egg.atelier = atelier;
+        alert(`Œuf ${eggId} associé à l’atelier "${atelier}"`);
+        document.getElementById('assignForm').reset();
+        renderEggsTable();
+      } else {
+        alert(`Œuf ${eggId} introuvable !`);
+      }
+    });
+
+    // --- Graphique ---
+    function renderEggsChart() {
+      const countsByDate = {};
+      eggsData.forEach(egg => {
+        const date = egg.dateLaid;
+        countsByDate[date] = (countsByDate[date] || 0) + 1;
+      });
+
+      const labels = Object.keys(countsByDate).sort();
+      const values = labels.map(date => countsByDate[date]);
+
       const ctx = document.getElementById('eggsChart').getContext('2d');
       new Chart(ctx, {
         type: 'bar',
-        data: { labels: data.labels, datasets: [{ label: "Œufs pondus", data: data.values, backgroundColor: '#F4D35E' }] },
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Œufs pondus",
+            data: values,
+            backgroundColor: '#000'
+          }]
+        },
         options: { responsive: true, scales: { y: { beginAtZero: true } } }
       });
-    } catch (err) {
-      console.error('Erreur chargement graphique :', err);
     }
-  }
 
-  // Initialisation
-  loadEggs();
-  loadEggsChart();
-</script>
+    // Initialisation
+    loadEggs();
+  </script>
 </body>
 </html>

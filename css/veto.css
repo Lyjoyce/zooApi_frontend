@@ -5,11 +5,111 @@
    ========================================================= */
 
 /* ---------- Reset & Base ---------- */
+/* badges conservation */
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;margin:0 4px;font-weight:600}
+.badge.ok{background:#138D75;color:#000}        /* Jaune savane */
+.badge.bientot{background:#FFD966;color:#000}   /* Jaune + clair quand <10j */
+.badge.perime{background:#F88379;color:#000}    /* Rose corail si périmé */
+    body {
+      font-family: Calibri, sans-serif;
+      margin: 0;
+      background-color: #F2F2F2;
+      color: #000;
+    }
+    
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
+}
+
+    header, footer {
+      background-color: #005349;
+      color: #FFF;
+      padding: 15px;
+      text-align: center;
+    }
+    header img.logo {
+      height: 60px;
+      vertical-align: middle;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #FFF;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #FFF;
+    }
+    h1, h2 {
+      color: #005349;
+    }
+    main {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background-color: #FFF;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #F4D35E;
+    }
+    tr:nth-child(even) {
+      background-color: #F9F9F9;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #005349;
+      color: #FFF;
+    }
+    button:hover {
+      background-color: #F4D35E;
+      color: #000;
+    }
+    form {
+      background: #FFF;
+      padding: 15px;
+      margin: 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    form label {
+      display: block;
+      margin: 8px 0 4px;
+    }
+    form input {
+      padding: 6px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+ 
+
+/*
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-  font-family: 'Calibri', sans-serif;
 }
 
 html {
@@ -20,8 +120,6 @@ body {
   font-family: 'Calibri', sans-serif;
   background-color: #FFF;
   color: #000;
-  margin: 0;
-  padding: 0;
   line-height: 1.5;
 }
 
@@ -32,11 +130,7 @@ header {
   padding: 2rem;
 }
 
-.logo {
-  width: 100px;
-  height: auto;
-  margin-bottom: 10px;
-}
+
 .nav-wrapper {
   background-color: #F4D35E;
   border: 2px solid #F4D35E;
@@ -73,7 +167,7 @@ header {
 /* ---------- Boutons ---------- */
 button, .btn-footer-yellow, .btn-footer-pink {
   border: none;
-  padding: 8px 14px;
+  padding: 5px;
   font-size: 0.9rem;
   border-radius: 6px;
   cursor: pointer;
@@ -85,8 +179,8 @@ button:hover, .btn-footer-yellow:hover, .btn-footer-pink:hover {
 }
 
 #logout-button {
-  background-color: #F88379;
-  color: #000;
+  background-color: #000;
+  color: #FFF;
   margin: 15px;
 }
 
@@ -98,7 +192,7 @@ button:hover, .btn-footer-yellow:hover, .btn-footer-pink:hover {
 
 .btn-footer-pink {
   background-color: #F88379;
-  color: #fff;
+  color: #FFF;
   margin: 5px;
 }
 
@@ -108,7 +202,7 @@ main {
 }
 
 section {
-  background-color: #ffffff;
+  background-color: #FFF;
   padding: 20px;
   margin-bottom: 25px;
   border-radius: 12px;
@@ -130,7 +224,7 @@ table {
 
 thead th {
   background-color: #005349;
-  color: #ffffff;
+  color: #FFF;
   padding: 10px;
   text-align: left;
 }
@@ -145,14 +239,15 @@ tbody tr:nth-child(even) {
 }
 
 tbody button {
-  background-color: #F4D35E;
+  background-color: #FFF;
+  border: #000 solid 0.5px;
   color: #005349;
   font-weight: bold;
 }
 
 /* ---------- Graphiques ---------- */
 .graph-section {
-  background-color: #ffffff;
+  background-color: #FFF;
   padding: 20px;
   border-radius: 12px;
   box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
@@ -167,7 +262,7 @@ canvas {
 /* ---------- Footer ---------- */
 footer {
   background-color: #005349;
-  color: #ffffff;
+  color: #FFF;
   padding: 15px 20px;
   text-align: center;
 }
