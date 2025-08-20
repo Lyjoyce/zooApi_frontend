@@ -111,13 +111,21 @@
   });
   
   // Table validés
-  // --- helpers ---
-function daysSince(iso) {
+ function daysSince(iso) {
   const d0 = new Date(iso);
   const now = new Date();
   const t0 = Date.UTC(d0.getFullYear(), d0.getMonth(), d0.getDate());
   const t1 = Date.UTC(now.getFullYear(), now.getMonth(), now.getDate());
   return Math.floor((t1 - t0) / 86400000);
+}
+
+function conservationText(dateLaidISO) {
+  const age = daysSince(dateLaidISO);
+  const amb = 30 - age;
+  const frg = 60 - age;
+  const ambTxt = amb > 0 ? `${amb} j restants (amb.)` : `Périmé (amb.)`;
+  const frgTxt = frg > 0 ? `${frg} j restants (frigo)` : `Périmé (frigo)`;
+  return `${ambTxt} | ${frgTxt}`;
 }
 
 function conservationLabels(dateLaidISO) {
