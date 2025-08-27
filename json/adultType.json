@@ -6,13 +6,15 @@
     "password": "MotdepasseTresLong1!",
     "type": "PROFESSEUR"
   },
-  {
-    "firstName": "Jean",
-    "lastName": "Dupont",
-    "email": "jean.dupont@test.fr",
-    "password": "MotdepasseTresLong2@",
-    "type": "PARENT"
-  },
+   {
+  "firstName": "Jean",
+  "lastName": "Dupont",
+  "email": "jean.dupont@example.com",
+  "visitDate": "2025-09-10",
+  "nbEnfants": 18,
+  "nbAdultes": 3,
+  "ateliers": ["OMELETTE", "NOURRIR"]
+   },
   {
     "firstName": "Sophie",
     "lastName": "Martin",
