@@ -29,7 +29,7 @@ if (form) {
     }
 
     try {
-      const response = await fetch('https://ton-backend/api/avis', {
+      const response = await fetch('https://api/v1/avis', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
