@@ -4,10 +4,19 @@ document.addEventListener("DOMContentLoaded", async () => {
   const filtreBtn = document.getElementById("filtre-combine");
   const liste = document.getElementById("liste-autruches");
 
-  // Charger les autruches depuis le fichier JSON
+  // Charger les autruches depuis le fichier JSON (avec try/catch)
   async function chargerAutruches() {
-    const res = await fetch("json/autruches.json");
-    return await res.json();
+    try {
+      const res = await fetch("json/autruches.json");
+      if (!res.ok) {
+        throw new Error("Impossible de charger les autruches (code " + res.status + ")");
+      }
+      return await res.json();
+    } catch (err) {
+      console.error(err);
+      container.innerHTML = "<p>Erreur lors du chargement des autruches.</p>";
+      return [];
+    }
   }
 
   // Afficher les autruches dans des cartes
