@@ -30,10 +30,9 @@
     </div>
   </div>
 
-  <script>
+   <script>
     console.log("JS chargé !");
 
-    // Vérifie que le formulaire et les inputs existent
     const form = document.getElementById('employeeLoginForm');
     const emailInput = document.getElementById('email');
     const passwordInput = document.getElementById('password');
@@ -43,7 +42,7 @@
     } else {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
-  console.log("Bouton cliqué, JS exécuté !");
+        console.log("Bouton cliqué, JS exécuté !");
 
         const email = emailInput.value.trim();
         const password = passwordInput.value;
@@ -58,19 +57,16 @@
         try {
           const response = await fetch(`${BASE_URL}/api/v1/employees/login`, {
             method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password })
           });
 
+          const data = await response.json();
+
           if (!response.ok) {
-            const errorData = await response.json().catch(() => ({}));
-            alert(errorData.message || "Échec de la connexion. Vérifiez vos identifiants.");
+            alert(data.message || "Échec de la connexion. Vérifiez vos identifiants.");
             return;
           }
-
-          const data = await response.json();
 
           if (!data.role || !data.firstName || !data.lastName) {
             alert("Réponse du serveur inattendue.");
@@ -80,7 +76,6 @@
 
           alert(`Bienvenue ${data.firstName} ${data.lastName} (${data.role})`);
 
-          // Redirection conditionnelle selon le rôle
           switch (data.role.toUpperCase()) {
             case 'EMPLOYEE':
               window.location.href = '/zooApi_frontend/dashboard-employee.html';
@@ -99,6 +94,8 @@
       });
     }
   </script>
+
+
 
   <!--<script src="js/employee-login.js"></script>-->
 </body>
