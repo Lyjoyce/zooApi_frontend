@@ -1,4 +1,4 @@
-/*
+
 // Vérifie que le formulaire et les inputs existent
 const form = document.getElementById('employeeLoginForm');
 const emailInput = document.getElementById('email');
@@ -64,4 +64,3 @@ if (!form || !emailInput || !passwordInput) {
     }
   });
 }
-*/
