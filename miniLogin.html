@@ -1,38 +1,22 @@
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>Test Fetch Simple</title>
-</head>
-<body>
-  <button id="testFetchBtn">Tester connexion</button>
+<script>
+  console.log("JS chargé !");
 
-  <script>
-    const BASE_URL = 'https://zooapi-autruche.onrender.com';
-    const btn = document.getElementById('testFetchBtn');
+  const BASE_URL = 'https://zooapi-autruche.onrender.com';
 
-    btn.addEventListener('click', async () => {
-      try {
-        // Requête POST de test (email et mot de passe existants)
-        const response = await fetch('https://zooapi-autruche.onrender.com/api/v1/employees/login', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: 'employe@zoo.com', password: 'admin1234' })
-        });
+  (async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/api/v1/employees/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: 'test@test.com', password: 'test123' })
+      });
 
-        const data = await response.json();
-        console.log("Réponse du serveur :", data);
-
-        if (!response.ok) {
-          console.error("Erreur :", data.message || "Connexion échouée");
-        } else {
-          alert("Connexion réussie ! Vérifier console pour détails.");
-        }
-
-      } catch (err) {
-        console.error("Erreur fetch :", err);
-      }
-    });
-  </script>
-</body>
-</html>
+      const data = await response.json();
+      console.log("Réponse serveur :", data);
+      alert("Fetch exécuté, regarde la console !");
+    } catch (err) {
+      console.error("Erreur fetch :", err);
+      alert("Erreur fetch, regarde la console !");
+    }
+  })();
+</script>
