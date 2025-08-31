@@ -26,11 +26,11 @@ document.getElementById('employeeLoginForm').addEventListener('submit', async (e
 
     // Redirection conditionnelle selon le rôle
     if (data.role === 'EMPLOYEE') {
-      window.location.href = '/dashboard-employee.html';
+      window.location.href = '/zooApi_frontend/dashboard-employee.html';
     } else if (data.role === 'VETERINAIRE') {
-      window.location.href = '/dashboard-veterinaire.html';
+      window.location.href = '/zooApi_frontend/dashboard-veterinaire.html';
     } else {
-      window.location.href = '/dashboard.html';
+      window.location.href = '/zooApi_frontend/dashboard.html';
     }
 
   } catch (error) {
