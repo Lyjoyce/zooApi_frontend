@@ -31,6 +31,8 @@
   </div>
 
   <script>
+    console.log("JS chargé !");
+
     // Vérifie que le formulaire et les inputs existent
     const form = document.getElementById('employeeLoginForm');
     const emailInput = document.getElementById('email');
@@ -41,6 +43,7 @@
     } else {
       form.addEventListener('submit', async (e) => {
         e.preventDefault();
+  console.log("Bouton cliqué, JS exécuté !");
 
         const email = emailInput.value.trim();
         const password = passwordInput.value;
