@@ -1,0 +1,13 @@
+{
+  "message": "✅ Avis validé avec succès",
+  "avis": {
+    "id": "6751ff894f7e6b5678d9ab12",
+    "ticketNumber": "TCK123",
+    "visitDate": "2025-05-12",
+    "firstName": "Alice",
+    "message": "Super atelier !",
+    "note": 5,
+    "date": "2025-05-13T10:45:00",
+    "validated": true
+  }
+}
