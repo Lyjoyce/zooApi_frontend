@@ -1,4 +1,4 @@
-const form = document.getElementById('employeeLoginForm');
+/*const form = document.getElementById('employeeLoginForm');
 const message = document.getElementById('message');
 
 form.addEventListener('submit', async (e) => {
@@ -46,7 +46,8 @@ form.addEventListener('submit', async (e) => {
     message.textContent = err.message;
   }
 });
-/*
+*/
+
 const form = document.getElementById('employeeLoginForm');
 const message = document.getElementById('message');
 
@@ -85,7 +86,7 @@ form.addEventListener('submit', async (e) => {
     message.textContent = err.message;
   }
 });
-*/
+
 
 /*
 document.addEventListener('DOMContentLoaded', () => {
