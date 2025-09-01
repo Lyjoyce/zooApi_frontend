@@ -1,7 +1,7 @@
 [
   {
     "email": "employee1@zoo.com",
-    "password": "$2a$10$K7If7xMZoL1lvj3e0W8kbeYci8nRKwQkAqYj9ytP4sChFoWZbCJba",
+    "password": "employee1duZOO",
     "firstName": "Alice",
     "lastName": "Martin",
     "role": "ROLE_EMPLOYEE",
@@ -10,7 +10,7 @@
   },
   {
     "email": "employee2@zoo.com",
-    "password": "$2a$10$1R7gboh4nMUMFh6mGJ5j3ON5xcmK3ywlT8aQQ6uPM7/6AQ6P0f6Aq",
+    "password": "employee2duZOO",
     "firstName": "Bob",
     "lastName": "Durand",
     "role": "ROLE_EMPLOYEE",
@@ -19,7 +19,7 @@
   },
   {
     "email": "employee3@zoo.com",
-    "password": "$2a$10$1zZCeWlyso4j1x2OKdUo9OG7IXkU1vMn6JpsA7vTXrb4OXcXNsLUO",
+    "password": "employee3duZOO",
     "firstName": "Chloé",
     "lastName": "Bernard",
     "role": "ROLE_EMPLOYEE",
@@ -28,7 +28,7 @@
   },
   {
     "email": "employee4@zoo.com",
-    "password": "$2a$10$8NafpwCoTKlI6CPsSHrVJ.4nDqO2Vf3i/BuJsgSPB69JdGB5eL1w6",
+    "password": "employee4duZOO",
     "firstName": "David",
     "lastName": "Lefevre",
     "role": "ROLE_EMPLOYEE",
@@ -37,7 +37,7 @@
   },
   {
     "email": "vet1@zoo.com",
-    "password": "$2a$10$Nss/jlg0NL2wvxwDkGrObuM6gf1EXZhA43YV8T0RIfnpZSmZ5ldly",
+    "password": "veterinaire1duZOO",
     "firstName": "Emma",
     "lastName": "Girard",
     "role": "ROLE_VETERINAIRE",
@@ -46,7 +46,7 @@
   },
   {
     "email": "vet2@zoo.com",
-    "password": "$2a$10$AQ2kZRUeH0yM8V3HBaWMTuShN2S6qAtEYeuP4U8uTi3wXl0EnZhWq",
+    "password": "veterinaire2duZOO",
     "firstName": "François",
     "lastName": "Moreau",
     "role": "ROLE_VETERINAIRE",
