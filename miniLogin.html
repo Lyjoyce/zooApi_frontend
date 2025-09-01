@@ -1,0 +1,22 @@
+<script>
+  console.log("JS chargé !");
+
+  const BASE_URL = 'https://zooapi-autruche.onrender.com';
+
+  (async () => {
+    try {
+      const response = await fetch(`${BASE_URL}/api/v1/employees/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: 'test@test.com', password: 'test123' })
+      });
+
+      const data = await response.json();
+      console.log("Réponse serveur :", data);
+      alert("Fetch exécuté, regarde la console !");
+    } catch (err) {
+      console.error("Erreur fetch :", err);
+      alert("Erreur fetch, regarde la console !");
+    }
+  })();
+</script>

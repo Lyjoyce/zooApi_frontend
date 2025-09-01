@@ -1,0 +1,56 @@
+[
+  {
+    "email": "employee1@zoo.com",
+    "password": "$2a$10$K7If7xMZoL1lvj3e0W8kbeYci8nRKwQkAqYj9ytP4sChFoWZbCJba",
+    "firstName": "Alice",
+    "lastName": "Martin",
+    "role": "ROLE_EMPLOYEE",
+    "active": true,
+    "enabled": true
+  },
+  {
+    "email": "employee2@zoo.com",
+    "password": "$2a$10$1R7gboh4nMUMFh6mGJ5j3ON5xcmK3ywlT8aQQ6uPM7/6AQ6P0f6Aq",
+    "firstName": "Bob",
+    "lastName": "Durand",
+    "role": "ROLE_EMPLOYEE",
+    "active": true,
+    "enabled": true
+  },
+  {
+    "email": "employee3@zoo.com",
+    "password": "$2a$10$1zZCeWlyso4j1x2OKdUo9OG7IXkU1vMn6JpsA7vTXrb4OXcXNsLUO",
+    "firstName": "Chloé",
+    "lastName": "Bernard",
+    "role": "ROLE_EMPLOYEE",
+    "active": true,
+    "enabled": true
+  },
+  {
+    "email": "employee4@zoo.com",
+    "password": "$2a$10$8NafpwCoTKlI6CPsSHrVJ.4nDqO2Vf3i/BuJsgSPB69JdGB5eL1w6",
+    "firstName": "David",
+    "lastName": "Lefevre",
+    "role": "ROLE_EMPLOYEE",
+    "active": true,
+    "enabled": true
+  },
+  {
+    "email": "vet1@zoo.com",
+    "password": "$2a$10$Nss/jlg0NL2wvxwDkGrObuM6gf1EXZhA43YV8T0RIfnpZSmZ5ldly",
+    "firstName": "Emma",
+    "lastName": "Girard",
+    "role": "ROLE_VETERINAIRE",
+    "active": true,
+    "enabled": true
+  },
+  {
+    "email": "vet2@zoo.com",
+    "password": "$2a$10$AQ2kZRUeH0yM8V3HBaWMTuShN2S6qAtEYeuP4U8uTi3wXl0EnZhWq",
+    "firstName": "François",
+    "lastName": "Moreau",
+    "role": "ROLE_VETERINAIRE",
+    "active": true,
+    "enabled": true
+  }
+]

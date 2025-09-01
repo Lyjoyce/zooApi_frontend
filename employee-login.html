@@ -75,17 +75,17 @@
 
           alert(`Bienvenue ${data.firstName} ${data.lastName} (${data.role})`);
 
-          switch (data.role.toUpperCase()) {
-            case 'EMPLOYEE':
-              window.location.href = 'zooApi_frontend/employee-dashboard.html';
-              break;
-            case 'VETERINAIRE':
-              window.location.href = 'zooApi_frontend/veterinaire-dashboard.html';
-              break;
-            default:
-              window.location.href = 'zooApi_frontend/dashboard.html';
-          }
-
+        switch (data.role.toUpperCase()) {
+          case 'EMPLOYEE':
+            window.location.href = 'zooApi_frontend/employee-dashboard.html';
+            break;
+          case 'VETERINAIRE':
+            window.location.href = 'zooApi_frontend/veterinaire-dashboard.html';
+            break;
+          default:
+            window.location.href = 'zooApi_frontend/dashboard.html';
+            break;
+        }
         } catch (error) {
           console.error("Erreur lors de la connexion :", error);
           alert("Erreur lors de la tentative de connexion. Vérifiez votre connexion ou le serveur.");
