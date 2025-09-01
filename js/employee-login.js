@@ -78,7 +78,7 @@ form.addEventListener('submit', async (e) => {
     message.textContent = `Connexion réussie. Bienvenue ${data.firstName} ${data.lastName}. Redirection...`;
 
     setTimeout(() => {
-      window.location.href = "employee-dashboard.html";
+      window.location.href = "https://lyjoyce.github.io/zooApi_frontend/employee-dashboard.html";
     }, 1000);
 
   } catch (err) {
