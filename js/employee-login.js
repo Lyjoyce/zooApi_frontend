@@ -38,9 +38,6 @@ form.addEventListener('submit', async (e) => {
         case 'VETERINAIRE':
           window.location.href = 'https://lyjoyce.github.io/zooApi_frontend/veterinaire-dashboard.html';
           break;
-        default:
-          window.location.href = '/zooApi_frontend/dashboard.html';
-          break;
       }
     }, 1000);
 
