@@ -31,7 +31,6 @@
   </div>
 
    <script>
-    console.log("JS chargé !");
 
     const form = document.getElementById('employeeLoginForm');
     const emailInput = document.getElementById('email');
@@ -78,13 +77,13 @@
 
           switch (data.role.toUpperCase()) {
             case 'EMPLOYEE':
-              window.location.href = '/zooApi_frontend/dashboard-employee.html';
+              window.location.href = 'zooApi_frontend/employee-dashboard.html';
               break;
             case 'VETERINAIRE':
-              window.location.href = '/zooApi_frontend/dashboard-veterinaire.html';
+              window.location.href = 'zooApi_frontend/veterinaire-dashboard.html';
               break;
             default:
-              window.location.href = '/zooApi_frontend/dashboard.html';
+              window.location.href = 'zooApi_frontend/dashboard.html';
           }
 
         } catch (error) {
