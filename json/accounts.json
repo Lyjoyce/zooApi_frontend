@@ -1,7 +1,7 @@
 [
   {
     "email": "employee1@zoo.com",
-    "password": "employee1duZOO",
+    "password": "employee1@duZOO",
     "firstName": "Alice",
     "lastName": "Martin",
     "role": "ROLE_EMPLOYEE",
@@ -10,7 +10,7 @@
   },
   {
     "email": "employee2@zoo.com",
-    "password": "employee2duZOO",
+    "password": "employee2@duZOO",
     "firstName": "Bob",
     "lastName": "Durand",
     "role": "ROLE_EMPLOYEE",
@@ -19,7 +19,7 @@
   },
   {
     "email": "employee3@zoo.com",
-    "password": "employee3duZOO",
+    "password": "employee3@duZOO",
     "firstName": "Chloé",
     "lastName": "Bernard",
     "role": "ROLE_EMPLOYEE",
@@ -28,7 +28,7 @@
   },
   {
     "email": "employee4@zoo.com",
-    "password": "employee4duZOO",
+    "password": "employee4@duZOO",
     "firstName": "David",
     "lastName": "Lefevre",
     "role": "ROLE_EMPLOYEE",
