@@ -1,3 +1,44 @@
+const form = document.getElementById('employeeLoginForm');
+const message = document.getElementById('message');
+
+form.addEventListener('submit', async (e) => {
+  e.preventDefault();
+
+  const email = form.email.value.trim();
+  const password = form.password.value;
+
+  if (!email || !password) {
+    message.style.color = "#F66C64";
+    message.textContent = "Veuillez remplir tous les champs !";
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:8080/api/v1/employees/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
+    });
+
+    if (!response.ok) throw new Error("Identifiants invalides.");
+
+    const data = await response.json();
+    localStorage.setItem("employeeToken", data.token); // si tu as un token
+    message.style.color = "#005349";
+    message.textContent = `Connexion réussie. Bienvenue ${data.firstName} ${data.lastName}. Redirection...`;
+
+    setTimeout(() => {
+      window.location.href = "employee-dashboard.html";
+    }, 1000);
+
+  } catch (err) {
+    message.style.color = "#F66C64";
+    message.textContent = err.message;
+  }
+});
+
+
+/*
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('employeeLoginForm');
   const emailInput = document.getElementById('email');
@@ -20,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     try {
-      const response = await fetch(`http://localhost:8080/api/v1/employees/login`, {
+      const response = await fetch('http://localhost:8080/api/v1/employees/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -71,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-
+*/
 /*
 // Vérifie que le formulaire et les inputs existent
 const form = document.getElementById('employeeLoginForm');
