@@ -22,8 +22,11 @@
     "firstName": "Sophie",
     "lastName": "Martin",
     "email": "sophie.martin@test.fr",
-    "password": "MotdepasseTresLong3#",
-    "type": "AUXILIAIRE"
+    "type": "AUXILIAIRE",
+    "visitDate": "2025-09-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "Paul",
