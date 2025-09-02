@@ -1,3 +1,4 @@
+
 const form = document.getElementById('employeeLoginForm');
 const message = document.getElementById('message');
 

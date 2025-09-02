@@ -75,43 +75,6 @@
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
-  <script>
-    // Déconnexion
-    document.getElementById("logout-button").addEventListener("click", () => {
-      sessionStorage.removeItem("employeeToken");
-      window.location.href = "index.html";
-    });
-
-    // Vérifier si le token existe et décoder les infos
-    window.addEventListener("DOMContentLoaded", () => {
-      const token = sessionStorage.getItem("employeeToken");
-      if (!token) {
-        alert("Vous devez vous connecter !");
-        window.location.href = "index.html";
-        return;
-      }
-
-      try {
-        // Décoder payload JWT
-        const payload = JSON.parse(atob(token.split(".")[1]));
-        const firstName = payload.firstName || "Employé";
-        const lastName = payload.lastName || "";
-        const role = payload.role || "ROLE_EMPLOYEE";
-
-        // Affichage du message de bienvenue
-        alert(`Bienvenue ${firstName} ${lastName} (${role})`);
-
-        // Afficher le nom sur la page
-        document.getElementById("employee-name").textContent = `Bonjour ${firstName} ${lastName}`;
-      } catch (err) {
-        console.error("Erreur lors de la lecture du token :", err);
-        alert("Session invalide. Veuillez vous reconnecter.");
-        sessionStorage.removeItem("employeeToken");
-        window.location.href = "index.html";
-      }
-    });
-  </script>
-
   <script src="js/ponteGraph.js"></script>
 </body>
 </html>
