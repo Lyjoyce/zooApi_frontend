@@ -64,6 +64,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const firstName = document.getElementById("firstName");
   const lastName = document.getElementById("lastName");
   const email = document.getElementById("email");
+  const adultType = document.getElementById("adultType");
   const visitDateInput = document.getElementById("visitDate");
   const weekdayDisplay = document.getElementById("weekdayDisplay");
   const nbEnfants = document.getElementById("nbEnfants");
@@ -133,6 +134,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return true;
   }
 
+  function validateAdultType() { // NOUVEAU
+    if (!adultType.value) {
+      showError(adultType, "Veuillez sélectionner un type d'adulte.");
+      return false;
+    }
+    clearError(adultType);
+    return true;
+  }
+
   const ALLOWED_DAYS = [1, 2, 4, 5];
   const WEEKDAYS = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
 
@@ -199,12 +209,14 @@ document.addEventListener("DOMContentLoaded", () => {
   firstName.addEventListener("blur", validateFirstName);
   lastName.addEventListener("blur", validateLastName);
   email.addEventListener("blur", validateEmail);
+  adultType.addEventListener("blur", validateAdultType);
   visitDateInput.addEventListener("blur", validateVisitDate);
   nbEnfants.addEventListener("blur", validateRatio);
   nbAdultes.addEventListener("blur", validateRatio);
   firstName.addEventListener("input", validateFirstName);
   lastName.addEventListener("input", validateLastName);
   email.addEventListener("input", validateEmail);
+  adultType.addEventListener("input", validateAdultType);
   visitDateInput.addEventListener("input", validateVisitDate);
   nbEnfants.addEventListener("input", validateRatio);
   nbAdultes.addEventListener("input", validateRatio);
@@ -219,6 +231,7 @@ document.addEventListener("DOMContentLoaded", () => {
       validateFirstName() &
       validateLastName() &
       validateEmail() &
+      validateAdultType()&
       validateVisitDate() &
       validateRatio() &
       validateAteliers();
@@ -232,6 +245,7 @@ document.addEventListener("DOMContentLoaded", () => {
       firstName: firstName.value.trim(),
       lastName: lastName.value.trim(),
       email: email.value.trim(),
+      adultType: adultType.value,
       visitDate: visitDateInput.value,
       nbEnfants: Number(nbEnfants.value),
       nbAdultes: Number(nbAdultes.value),
@@ -263,6 +277,7 @@ document.addEventListener("DOMContentLoaded", () => {
       clearError(firstName);
       clearError(lastName);
       clearError(email);
+      clearError(adultType);
       clearError(visitDateInput);
       clearError(nbAdultes);
       clearError(nbEnfants);
