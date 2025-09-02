@@ -23,20 +23,6 @@ document.addEventListener("DOMContentLoaded", () => {
             nbAdultes
         };
 
-        /* Ici tu mets ton fetch
-        fetch('/api/tickets', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(ticketData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert("Réservation réussie ! Numéro : " + data.ticketNumber);
-            console.log("Ticket enregistré :", data);
-        })
-        .catch(error => console.error("Erreur:", error));
-    });
-*/
   // Ateliers
   const atelierMatin = document.getElementById("atelierMatin");
   const atelierAprem = document.getElementById("atelierAprem");
@@ -48,6 +34,15 @@ document.addEventListener("DOMContentLoaded", () => {
   // const API_BASE_URL = isLocalDev ? "http://localhost:8080/api/v1/tickets" : "https://api.ton-domaine.com/api/v1/tickets";
 
   // Utils erreurs
+  function validateTicketNumber() {
+    if (!ticketNumber.value.trim()) {
+      showError(ticketNumber, "Le numéro de ticket est requis.");
+      return false;
+    }
+      clearError(ticketNumber);
+      return true;
+  }
+
   function showError(el, msg) {
     let box = el.tagName === "FIELDSET" ? el : el.parentNode;
     let err = box.querySelector(".error-message");
@@ -173,6 +168,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Listeners
+  ticketNumber.addEventListener("blur", validateTicketNumber);
+  ticketNumber.addEventListener("input", validateTicketNumber);
   firstName.addEventListener("blur", validateFirstName);
   lastName.addEventListener("blur", validateLastName);
   email.addEventListener("blur", validateEmail);
@@ -195,6 +192,7 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const isValid =
+      validateTicketNumber() &&
       validateFirstName() &&
       validateLastName() &&
       validateEmail() &&
