@@ -3,6 +3,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("ticketForm");
 
   // Champs
+  const ticketNumber = document.getElementById('ticketNumber');
   const firstName = document.getElementById("firstName");
   const lastName = document.getElementById("lastName");
   const email = document.getElementById("email");
@@ -12,6 +13,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const nbEnfants = document.getElementById("nbEnfants");
   const nbAdultes = document.getElementById("nbAdultes");
 
+  // Construction de l’objet
+        const ticketData = {
+            ticketNumber,
+            firstName,
+            lastName,
+            email,
+            nbEnfants,
+            nbAdultes
+        };
+
+        /* Ici tu mets ton fetch
+        fetch('/api/tickets', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(ticketData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            alert("Réservation réussie ! Numéro : " + data.ticketNumber);
+            console.log("Ticket enregistré :", data);
+        })
+        .catch(error => console.error("Erreur:", error));
+    });
+*/
   // Ateliers
   const atelierMatin = document.getElementById("atelierMatin");
   const atelierAprem = document.getElementById("atelierAprem");
@@ -170,12 +195,12 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const isValid =
-      validateFirstName() &
-      validateLastName() &
-      validateEmail() &
-      validateAdultType()&
-      validateVisitDate() &
-      validateRatio() &
+      validateFirstName() &&
+      validateLastName() &&
+      validateEmail() &&
+      validateAdultType()&&
+      validateVisitDate() &&
+      validateRatio() &&
       validateAteliers();
 
     if (!isValid) {
@@ -184,6 +209,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const payload = {
+      ticketNumber: ticketNumber.value,
       firstName: firstName.value.trim(),
       lastName: lastName.value.trim(),
       email: email.value.trim(),
