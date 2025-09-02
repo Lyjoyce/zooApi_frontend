@@ -37,7 +37,7 @@
   },
   {
     "email": "vet1@zoo.com",
-    "password": "veterinaire1duZOO",
+    "password": "veterin1@duZOO",
     "firstName": "Emma",
     "lastName": "Girard",
     "role": "ROLE_VETERINAIRE",
@@ -46,7 +46,7 @@
   },
   {
     "email": "vet2@zoo.com",
-    "password": "veterinaire2duZOO",
+    "password": "veterin2@duZOO",
     "firstName": "François",
     "lastName": "Moreau",
     "role": "ROLE_VETERINAIRE",
