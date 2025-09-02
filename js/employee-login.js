@@ -1,4 +1,4 @@
-
+/*
 const form = document.getElementById('employeeLoginForm');
 const message = document.getElementById('message');
 
@@ -57,8 +57,8 @@ form.addEventListener('submit', async (e) => {
     message.textContent = err.message;
   }
 });
+*/
 
-/*
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('employeeLoginForm');
   const emailInput = document.getElementById('email');
@@ -131,7 +131,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
-*/
+
 
 /*
 // Vérifie que le formulaire et les inputs existent
