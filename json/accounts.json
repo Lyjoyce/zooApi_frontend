@@ -28,7 +28,7 @@
   },
   {
     "email": "employee4@zoo.com",
-    "password": "employee4@duZOO",
+    "password": "employee4duZOO",
     "firstName": "David",
     "lastName": "Lefevre",
     "role": "ROLE_EMPLOYEE",
@@ -37,7 +37,7 @@
   },
   {
     "email": "vet1@zoo.com",
-    "password": "veterin1@duZOO",
+    "password": "veterinaire1duZOO",
     "firstName": "Emma",
     "lastName": "Girard",
     "role": "ROLE_VETERINAIRE",
@@ -46,7 +46,7 @@
   },
   {
     "email": "vet2@zoo.com",
-    "password": "veterin2@duZOO",
+    "password": "veterinaire1duZOO",
     "firstName": "François",
     "lastName": "Moreau",
     "role": "ROLE_VETERINAIRE",
