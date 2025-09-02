@@ -145,10 +145,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Redirection selon le rôle
       switch (data.role.toUpperCase()) {
-        case 'EMPLOYEE':
+        case 'ROLE_EMPLOYEE':
           window.location.href = 'https://lyjoyce.github.io/zooApi_frontend/employee-dashboard.html';
           break;
-        case 'VETERINAIRE':
+        case 'ROLE_VETERINAIRE':
           window.location.href = 'https://lyjoyce.github.io/zooApi_frontend/veterinaire-dashboard.html';
           break;
         default:
