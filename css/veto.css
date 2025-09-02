@@ -43,12 +43,12 @@
     }
     nav a {
       margin: 0 10px;
-      color: #FFF;
+      color: #000;
       text-decoration: none;
     }
     nav a:hover {
       text-decoration: underline;
-      color: #FFF;
+      color: #000;
     }
     h1, h2 {
       color: #005349;
