@@ -31,6 +31,125 @@
     <button id="logout-button">Déconnexion</button>
 
     <section>
+      <h2>Validation des Avis</h2>
+      <p id="employee-name" class="employee-greeting"></p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Prénom</th>
+            <th>Date</th>
+            <th>Note</th>
+            <th>Message</th>
+            <th>Valider</th>
+          </tr>
+        </thead>
+        <tbody id="avisTableBody">
+          <!-- Avis non validés -->
+        </tbody>
+      </table>
+    </section> 
+
+    <!-- SECTION GRAPHIQUE DE PONTE -->
+    <section class="graph-section">
+      <h2>Ponte d'œufs cette semaine</h2>
+      <canvas id="eggsChart" width="600" height="400"></canvas>
+    </section>
+  </main>
+
+  <footer id="contact">
+    <div class="footer-buttons">
+      <a href="avis-publics.html" class="btn-footer-yellow">Lire les avis</a>
+      <a href="avis-formulaire.html" class="btn-footer-pink">Écrire un avis</a>
+    </div>
+    <p>
+      Contact :
+      <a href="mailto:contact@autruche-compagnie.fr">contact@autruche-compagnie.fr</a> |
+      Téléphone : 01 23 45 67 89
+    </p>
+    <p>
+      <a href="contact.html">Contact</a> |
+      <a href="mentions-legales.html">Mentions légales</a> |
+      <a href="cgu.html">CGU</a>
+    </p>
+    <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
+  </footer>
+
+  <script>
+    // Déconnexion
+    document.getElementById("logout-button").addEventListener("click", () => {
+      sessionStorage.removeItem("employeeToken");
+      window.location.href = "index.html";
+    });
+
+    // Vérifier si le token existe et décoder les infos
+    window.addEventListener("DOMContentLoaded", () => {
+      const token = sessionStorage.getItem("employeeToken");
+      if (!token) {
+        alert("Vous devez vous connecter !");
+        window.location.href = "index.html";
+        return;
+      }
+
+      try {
+        // Décoder payload JWT
+        const payload = JSON.parse(atob(token.split(".")[1]));
+        const firstName = payload.firstName || "Employé";
+        const lastName = payload.lastName || "";
+        const role = payload.role || "ROLE_EMPLOYEE";
+
+        // Affichage du message de bienvenue
+        alert(`Bienvenue ${firstName} ${lastName} (${role})`);
+
+        // Afficher le nom sur la page
+        document.getElementById("employee-name").textContent = `Bonjour ${firstName} ${lastName}`;
+      } catch (err) {
+        console.error("Erreur lors de la lecture du token :", err);
+        alert("Session invalide. Veuillez vous reconnecter.");
+        sessionStorage.removeItem("employeeToken");
+        window.location.href = "index.html";
+      }
+    });
+  </script>
+
+  <script src="js/ponteGraph.js"></script>
+</body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Validation des Avis - Employé</title>
+  <link rel="stylesheet" href="css/employee-dashboard.css" />
+  <link rel="stylesheet" href="css/ponteGraph.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+
+<body>
+  <header>
+    <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo" />
+    <h1>Autruche & Compagnie</h1>
+    <p class="slogan">Une aventure pédagogique et sensorielle autour des autruches</p>
+
+    <div class="nav-wrapper">
+      <nav class="top-nav">
+        <a href="index.html#accueil">Accueil</a>
+        <a href="index.html#ferme">La Ferme</a>
+        <a href="index.html#ateliers">Ateliers</a>
+        <a href="index.html#inscription">Inscription</a>
+        <a href="index.html#ranchs">Ranchs</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <button id="logout-button">Déconnexion</button>
+
+    <section>
     <h2>Validation des Avis</h2>
     <p id="employee-name" class="employee-greeting"></p>
 
@@ -45,12 +164,15 @@
         </tr>
       </thead>
       <tbody id="avisTableBody">
+        -->
         <!-- Avis non validés -->
+         <!--
       </tbody>
     </table>
     </section> 
-
+-->
     <!-- SECTION GRAPHIQUE DE PONTE -->
+     <!--
     <section class="graph-section">
       <h2>Ponte d'œufs cette semaine</h2>
       <canvas id="eggsChart" width="600" height="400"></canvas>
@@ -81,3 +203,4 @@
   <script src="js/ponteGraph.js"></script>
 </body>
 </html>
+-->
