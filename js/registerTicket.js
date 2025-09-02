@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("ticketForm");
 
   // Champs
-  const ticketNumber = document.getElementById('ticketNumber');
   const firstName = document.getElementById("firstName");
   const lastName = document.getElementById("lastName");
   const email = document.getElementById("email");
@@ -15,7 +14,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Construction de l’objet
         const ticketData = {
-            ticketNumber,
             firstName,
             lastName,
             email,
@@ -34,15 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
   // const API_BASE_URL = isLocalDev ? "http://localhost:8080/api/v1/tickets" : "https://api.ton-domaine.com/api/v1/tickets";
 
   // Utils erreurs
-  function validateTicketNumber() {
-    if (!ticketNumber.value.trim()) {
-      showError(ticketNumber, "Le numéro de ticket est requis.");
-      return false;
-    }
-      clearError(ticketNumber);
-      return true;
-  }
-
   function showError(el, msg) {
     let box = el.tagName === "FIELDSET" ? el : el.parentNode;
     let err = box.querySelector(".error-message");
@@ -168,8 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Listeners
-  ticketNumber.addEventListener("blur", validateTicketNumber);
-  ticketNumber.addEventListener("input", validateTicketNumber);
   firstName.addEventListener("blur", validateFirstName);
   lastName.addEventListener("blur", validateLastName);
   email.addEventListener("blur", validateEmail);
@@ -192,7 +179,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
 
     const isValid =
-      validateTicketNumber() &&
       validateFirstName() &&
       validateLastName() &&
       validateEmail() &&
@@ -207,7 +193,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     const payload = {
-      ticketNumber: ticketNumber.value,
       firstName: firstName.value.trim(),
       lastName: lastName.value.trim(),
       email: email.value.trim(),
