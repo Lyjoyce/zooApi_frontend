@@ -1,62 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const form = document.getElementById("registrationForm");
 
-    form.addEventListener("submit", async (e) => {
-        e.preventDefault();
-
-        // Récupération des valeurs
-        const fullName = document.getElementById("fullName").value.trim();
-        const password = document.getElementById("password").value.trim();
-        const confirmPassword = document.getElementById("confirmPassword").value.trim();
-        const adultType = document.getElementById("adultType").value;
-
-        // Validation simple
-        let errors = [];
-
-        if (!fullName) errors.push("Le nom complet est obligatoire.");
-        if (!password) errors.push("Le mot de passe est obligatoire.");
-        if (password !== confirmPassword) errors.push("Les mots de passe ne correspondent pas.");
-        if (!adultType || (adultType !== "professeur" && adultType !== "accompagnant")) {
-            errors.push("Veuillez sélectionner un type d’adulte valide.");
-        }
-
-        if (errors.length > 0) {
-            alert(errors.join("\n"));
-            return;
-        }
-
-        // Préparer les données à envoyer
-        const payload = {
-            fullName,
-            password,
-            adultType
-        };
-
-        try {
-            const response = await fetch("/api/adult/register", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(payload)
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                alert("Inscription réussie !");
-                form.reset();
-            } else {
-                const errorData = await response.json();
-                alert("Erreur : " + (errorData.message || "Une erreur est survenue"));
-            }
-        } catch (err) {
-            console.error(err);
-            alert("Erreur réseau ou serveur.");
-        }
-    });
-});
-
-/*
 document.addEventListener("DOMContentLoaded", () => { 
   const form = document.getElementById("ticketForm");
 
@@ -288,4 +230,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-*/
