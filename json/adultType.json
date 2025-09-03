@@ -4,7 +4,7 @@
     "lastName": "Curie",
     "email": "marie.curie@test.fr",
     "type": "PROFESSEUR",
-    "visitDate": "2025-08-09",
+    "visitDate": "2025-05-09",
     "nbEnfants": 18,
     "nbAdultes": 3,
     "ateliers": ["OMELETTE", "NOURRIR"]
@@ -13,7 +13,7 @@
   "firstName": "Jean",
   "lastName": "Dupont",
   "email": "jean.dupont@example.com",
-  "visitDate": "2025-09-09",
+  "visitDate": "2025-08-09",
   "nbEnfants": 18,
   "nbAdultes": 3,
   "ateliers": ["OMELETTE", "NOURRIR"]
@@ -29,72 +29,94 @@
     "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
-    "firstName": "Paul",
-    "lastName": "Bernard",
-    "email": "paul.bernard@test.fr",
-    "password": "MotdepasseTresLong4$",
-    "type": "PROFESSEUR"
-  },
-  {
     "firstName": "Claire",
     "lastName": "Lemoine",
     "email": "claire.lemoine@test.fr",
-    "password": "MotdepasseTresLong5%",
-    "type": "PARENT"
+    "type": "PARENT",
+    "visitDate": "2025-11-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "Michel",
     "lastName": "Faure",
     "email": "michel.faure@test.fr",
-    "password": "MotdepasseTresLong6^",
-    "type": "AUXILIAIRE"
+    "type": "PROFESSEUR",
+    "visitDate": "2025-12-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
+  },
+  {
+    "firstName": "Paul",
+    "lastName": "Bernard",
+    "email": "paul.bernard@test.fr",
+    "type": "AUXILIAIRE",
+     "visitDate": "2025-15-09",
+    "nbEnfants": 12,
+    "nbAdultes": 2,
+    "ateliers": ["NOURRIR"]
   },
   {
     "firstName": "Isabelle",
     "lastName": "Rousseau",
     "email": "isabelle.rousseau@test.fr",
-    "password": "MotdepasseTresLong7&",
-    "type": "PROFESSEUR"
+    "type": "PROFESSEUR",
+    "visitDate": "2025-15-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "Laurent",
     "lastName": "Garnier",
     "email": "laurent.garnier@test.fr",
-    "phone": "0689012345",
-    "password": "MotdepasseTresLong8*",
-    "type": "PARENT"
+    "type": "PROFESSEUR",
+    "visitDate": "2025-16-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "Nathalie",
     "lastName": "Dubois",
     "email": "nathalie.dubois@test.fr",
-    "phone": "0690123456",
-    "password": "MotdepasseTresLong9(",
-    "type": "AUXILIAIRE"
+    "type": "AUXILIAIRE",
+    "visitDate": "2025-18-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "Antoine",
     "lastName": "Michel",
     "email": "antoine.michel@test.fr",
-    "phone": "0601234567",
-    "password": "MotdepasseTresLong10)",
-    "type": "PROFESSEUR"
+    "type": "PROFESSEUR",
+    "visitDate": "2025-18-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "Caroline",
     "lastName": "Blanc",
     "email": "caroline.blanc@test.fr",
-    "phone": "0612345670",
-    "password": "MotdepasseTresLong11_",
-    "type": "PARENT"
+    "type": "PARENT",
+    "visitDate": "2025-18-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
   },
   {
     "firstName": "David",
     "lastName": "Moreau",
     "email": "david.moreau@test.fr",
-    "phone": "0623456701",
-    "password": "MotdepasseTresLong12+",
-    "type": "AUXILIAIRE"
+    "type": "AUXILIAIRE",
+    "visitDate": "2025-18-09",
+    "nbEnfants": 18,
+    "nbAdultes": 3,
+    "ateliers": ["OMELETTE", "NOURRIR"]
 
   }
 ]

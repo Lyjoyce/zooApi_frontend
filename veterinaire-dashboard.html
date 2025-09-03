@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html> 
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
@@ -30,6 +30,7 @@
           <tr>
             <th>ID Œuf</th>
             <th>Date de ponte</th>
+            <th>Date limite (60j)</th> <!-- ✅ nouvelle colonne -->
             <th>Autruche</th>
             <th>Atelier associé</th>
             <th>Validé par vétérinaire</th>
@@ -99,18 +100,30 @@
     function renderEggsTable() {
       const tbody = document.getElementById('eggsTableBody');
       tbody.innerHTML = '';
-      eggsData.forEach(egg => {
+      eggsData.forEach((egg, index) => {
+        // ✅ Génération automatique d'un ID si manquant
+        if (!egg.id) egg.id = index + 1;
+
         if (egg.active && !egg.used) {
+          const dateLaid = new Date(egg.dateLaid);
+
+          // ✅ Calcul date limite +60 jours
+          const expiryDate = new Date(dateLaid);
+          expiryDate.setDate(dateLaid.getDate() + 60);
+
           const tr = document.createElement('tr');
           tr.innerHTML = `
             <td>${egg.id}</td>
-            <td>${new Date(egg.dateLaid).toLocaleDateString()}</td>
+            <td>${dateLaid.toLocaleDateString()}</td>
+            <td>${expiryDate.toLocaleDateString()}</td> <!-- ✅ affichage date limite -->
             <td>${egg.femaleId}</td>
             <td>${egg.atelier || '-'}</td>
             <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
             <td>
               <button onclick="validateEgg(${egg.id})">Valider</button>
-              <button onclick="markUsed(${egg.id})">Marquer utilisé</button>
+              <button onclick="markUsed(${egg.id})">Réserver</button>
+              <button onclick="conserveEgg(${egg.id}, 30)">Conserver 30j</button>
+              <button onclick="conserveEgg(${egg.id}, 60)">Conserver 60j</button>
             </td>
           `;
           tbody.appendChild(tr);
@@ -174,6 +187,18 @@
         alert(`Œuf ${eggId} introuvable !`);
       }
     });
+
+    function conserveEgg(id, days) {
+      const egg = eggsData.find(e => e.id === id);
+      if (egg && egg.validatedByVet) {
+        egg.conservationEndDate = new Date();
+        egg.conservationEndDate.setDate(egg.conservationEndDate.getDate() + days);
+        alert(`Œuf ${id} mis en conservation pour ${days} jours.`);
+        renderEggsTable();
+      } else {
+        alert("L'œuf doit être validé avant conservation !");
+      }
+    }
 
     // --- Graphique ---
     function renderEggsChart() {
