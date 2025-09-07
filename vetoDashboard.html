@@ -1,0 +1,553 @@
+
+  <script>
+    // Déconnexion
+    document.getElementById('logout-button').addEventListener('click', () => {
+      localStorage.clear();
+      window.location.href = '/index.html';
+    });
+
+    // --- Gestion des œufs ---
+    let eggsData = [];
+
+    async function loadEggs() {
+      try {
+        const response = await fetch('/json/eggs.json');
+        eggsData = await response.json();
+        renderEggsTable();
+        renderEggsChart();
+      } catch (err) {
+        console.error('Erreur chargement œufs :', err);
+      }
+    }
+
+    function renderEggsTable() {
+      const tbody = document.getElementById('eggsTableBody');
+      tbody.innerHTML = '';
+      eggsData.forEach((egg, index) => {
+        // ✅ Génération automatique d'un ID si manquant
+        if (!egg.id) egg.id = index + 1;
+
+        if (egg.active && !egg.used) {
+          const dateLaid = new Date(egg.dateLaid);
+
+          // ✅ Calcul date limite +60 jours
+          const expiryDate = new Date(dateLaid);
+          expiryDate.setDate(dateLaid.getDate() + 60);
+
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${egg.id}</td>
+            <td>${dateLaid.toLocaleDateString()}</td>
+            <td>${expiryDate.toLocaleDateString()}</td> <!-- ✅ affichage date limite -->
+            <td>${egg.femaleId}</td>
+            <td>${egg.atelier || '-'}</td>
+            <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
+            <td>
+              <button onclick="validateEgg(${egg.id})">Valider</button>
+              <button onclick="markUsed(${egg.id})">Réserver</button>
+              <button onclick="conserveEgg(${egg.id}, 30)">Conserver 30j</button>
+              <button onclick="conserveEgg(${egg.id}, 60)">Conserver 60j</button>
+            </td>
+          `;
+          tbody.appendChild(tr);
+        }
+      });
+    }
+
+    function validateEgg(id) {
+      const egg = eggsData.find(e => e.id === id);
+      if (egg) {
+        egg.validatedByVet = true;
+        alert(`Œuf ${id} validé pour consommation.`);
+        renderEggsTable();
+      }
+    }
+
+    function markUsed(id) {
+      const egg = eggsData.find(e => e.id === id);
+      if (egg) {
+        egg.used = true;
+        alert(`Œuf ${id} marqué comme utilisé pour un atelier.`);
+        renderEggsTable();
+      }
+    }
+
+    // --- Formulaire 1 : Enregistrement œuf ---
+    document.getElementById('eggForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const ostrichId = parseInt(document.getElementById('ostrichId').value);
+      const dateLaid = document.getElementById('dateLaid').value;
+
+      const newEgg = {
+        id: eggsData.length + 1,
+        femaleId: ostrichId,
+        dateLaid: dateLaid,
+        active: true,
+        used: false,
+        validatedByVet: false,
+        atelier: ""
+      };
+
+      eggsData.push(newEgg);
+      alert(`Œuf enregistré avec succès (ID: ${newEgg.id}) !`);
+      document.getElementById('eggForm').reset();
+      renderEggsTable();
+      renderEggsChart();
+    });
+
+    // --- Formulaire 2 : Association atelier ---
+    document.getElementById('assignForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      const eggId = parseInt(document.getElementById('eggIdAssign').value);
+      const atelier = document.getElementById('atelierName').value.trim();
+      const egg = eggsData.find(e => e.id === eggId);
+      if (egg) {
+        egg.atelier = atelier;
+        alert(`Œuf ${eggId} associé à l’atelier "${atelier}"`);
+        document.getElementById('assignForm').reset();
+        renderEggsTable();
+      } else {
+        alert(`Œuf ${eggId} introuvable !`);
+      }
+    });
+
+    function conserveEgg(id, days) {
+      const egg = eggsData.find(e => e.id === id);
+      if (egg && egg.validatedByVet) {
+        egg.conservationEndDate = new Date();
+        egg.conservationEndDate.setDate(egg.conservationEndDate.getDate() + days);
+        alert(`Œuf ${id} mis en conservation pour ${days} jours.`);
+        renderEggsTable();
+      } else {
+        alert("L'œuf doit être validé avant conservation !");
+      }
+    }
+
+    // --- Graphique ---
+    function renderEggsChart() {
+      const countsByDate = {};
+      eggsData.forEach(egg => {
+        const date = egg.dateLaid;
+        countsByDate[date] = (countsByDate[date] || 0) + 1;
+      });
+
+      const labels = Object.keys(countsByDate).sort();
+      const values = labels.map(date => countsByDate[date]);
+
+      const ctx = document.getElementById('eggsChart').getContext('2d');
+      new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: labels,
+          datasets: [{
+            label: "Œufs pondus",
+            data: values,
+            backgroundColor: '#000'
+          }]
+        },
+        options: { responsive: true, scales: { y: { beginAtZero: true } } }
+      });
+    }
+
+    // Initialisation
+    loadEggs();
+  </script>
+
+  
+// =========================================================
+// Rendu du tableau des œufs (inclut les bons styles CSS)
+// =========================================================
+function renderEggsTable() {
+  const tbody = document.querySelector("#eggs-table tbody");
+  tbody.innerHTML = "";
+
+  eggs.forEach(egg => {
+    const tr = document.createElement("tr");
+
+    // Statut avec badge
+    const statusClass = egg.status === "allocated"
+      ? "ok"
+      : egg.status === "pending"
+      ? "bientot"
+      : "perime";
+
+    tr.innerHTML = `
+      <td>${egg.id}</td>
+      <td>${egg.date}</td>
+      <td><span class="badge ${statusClass}">${egg.status}</span></td>
+      <td class="actions"></td>
+    `;
+
+    // Cellule actions
+    const actionsCell = tr.querySelector(".actions");
+
+    // Bouton Valider
+    const validateBtn = document.createElement("button");
+    validateBtn.textContent = "Valider";
+    validateBtn.className = "validate";
+    validateBtn.onclick = () => validateEgg(egg.id);
+    actionsCell.appendChild(validateBtn);
+
+    // Bouton Désactiver
+    const deactivateBtn = document.createElement("button");
+    deactivateBtn.textContent = "Désactiver";
+    deactivateBtn.className = "deactivate";
+    deactivateBtn.onclick = () => deactivateEgg(egg.id);
+    actionsCell.appendChild(deactivateBtn);
+
+    // Bouton Réactiver
+    const reactivateBtn = document.createElement("button");
+    reactivateBtn.textContent = "Réactiver";
+    reactivateBtn.className = "reactivate";
+    reactivateBtn.onclick = () => reactivateEgg(egg.id);
+    actionsCell.appendChild(reactivateBtn);
+
+    // Bouton Allouer
+    const allocateBtn = document.createElement("button");
+    allocateBtn.textContent = "Allouer";
+    allocateBtn.className = "allocate";
+    allocateBtn.onclick = () => allocateEggToWorkshop(egg.id, "omelette");
+    actionsCell.appendChild(allocateBtn);
+
+    tbody.appendChild(tr);
+  });
+}
+
+// ======================================================
+// 🔹 RENDU TABLEAU DANS LE DASHBOARD
+// ======================================================
+
+function renderEggsTable() {
+  const tbody = document.getElementById('eggsTableBody');
+  tbody.innerHTML = '';
+  eggsData.forEach((egg, index) => {
+    if (!egg.id) egg.id = index + 1;
+
+    if (egg.active) {
+      const dateLaid = new Date(egg.dateLaid);
+      const expiryDate = new Date(dateLaid);
+      expiryDate.setDate(dateLaid.getDate() + 60);
+
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+        <td>${egg.id}</td>
+        <td>${dateLaid.toLocaleDateString()}</td>
+        <td>${expiryDate.toLocaleDateString()}</td>
+        <td>${egg.femaleId}</td>
+        <td>${egg.atelier || '-'}</td>
+        <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
+        <td>
+          <button onclick="validateEgg(${egg.id})">Valider</button>
+          <button onclick="reserveEggs(1)">Réserver</button>
+          <button onclick="releaseEgg(${egg.id})">Libérer</button>
+          <button onclick="conserveEgg(${egg.id}, 30)">Conserver 30j</button>
+          <button onclick="conserveEgg(${egg.id}, 60)">Conserver 60j</button>
+          <button onclick="deactivateEgg(${egg.id})">Désactiver</button>
+        </td>
+      `;
+      tbody.appendChild(tr);
+    }
+  });
+}
+
+  <!--
+  /*
+  /* =========================================================
+   Dashboard Commun - Employé & Vétérinaire
+   Fichier : dashboard.css
+   Optimisé pour VS Code, Visualisation responsive
+   ========================================================= */
+
+/* ---------- Reset & Base ---------- */
+/* badges conservation */
+.badge{display:inline-block;padding:4px 10px;border-radius:999px;margin:0 4px;font-weight:600}
+.badge.ok{background:#138D75;color:#000}        /* Jaune savane */
+.badge.bientot{background:#FFD966;color:#000}   /* Jaune + clair quand <10j */
+.badge.perime{background:#F88379;color:#000}    /* Rose corail si périmé */
+    body {
+      font-family: Calibri, sans-serif;
+      margin: 0;
+      background-color: #F2F2F2;
+      color: #000;
+    }
+    
+.logo-home-link {
+  display: block;
+  text-align: center;
+  margin: 1rem 0;
+}
+.logo-home-link img {
+  width: 100px;
+  transition: transform 0.3s ease;
+}
+
+.logo-home-link img:hover {
+  transform: scale(1.1);
+}
+
+    header, footer {
+      background-color: #005349;
+      color: #FFF;
+      padding: 15px;
+      text-align: center;
+    }
+    header img.logo {
+      height: 60px;
+      vertical-align: middle;
+    }
+    nav a {
+      margin: 0 10px;
+      color: #000;
+      text-decoration: none;
+    }
+    nav a:hover {
+      text-decoration: underline;
+      color: #000;
+    }
+    h1, h2 {
+      color: #005349;
+    }
+    main {
+      padding: 20px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+      background-color: #FFF;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 8px;
+      text-align: center;
+    }
+    th {
+      background-color: #F4D35E;
+    }
+    tr:nth-child(even) {
+      background-color: #F9F9F9;
+    }
+    button {
+      padding: 5px 10px;
+      margin: 2px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      background-color: #005349;
+      color: #FFF;
+    }
+    button:hover {
+      background-color: #F4D35E;
+      color: #000;
+    }
+    form {
+      background: #FFF;
+      padding: 15px;
+      margin: 20px 0;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+    form label {
+      display: block;
+      margin: 8px 0 4px;
+    }
+    form input {
+      padding: 6px;
+      width: 100%;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+ 
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Calibri', sans-serif;
+  background-color: #FFF;
+  color: #000;
+  line-height: 1.5;
+}
+
+header {
+  background-color: #005349;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+}
+
+
+.nav-wrapper {
+  background-color: #F4D35E;
+  border: 2px solid #F4D35E;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  margin-top: 1.5rem;
+  display: inline-block;
+}
+
+.top-nav {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.top-nav a {
+  color: #000;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.top-nav a:hover {
+  text-decoration: underline;
+}
+
+.slogan {
+  font-style: italic;
+  font-size: 1rem;
+  margin-top: 5px;
+}
+
+/* ---------- Boutons ---------- */
+button, .btn-footer-yellow, .btn-footer-pink {
+  border: none;
+  padding: 5px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover, .btn-footer-yellow:hover, .btn-footer-pink:hover {
+  transform: scale(1.05);
+}
+
+#logout-button {
+  background-color: #000;
+  color: #FFF;
+  margin: 15px;
+}
+
+.btn-footer-yellow {
+  background-color: #F4D35E;
+  color: #005349;
+  margin: 5px;
+}
+
+.btn-footer-pink {
+  background-color: #F88379;
+  color: #FFF;
+  margin: 5px;
+}
+
+/* ---------- Sections ---------- */
+main {
+  padding: 20px;
+}
+
+section {
+  background-color: #FFF;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+section h2 {
+  margin-bottom: 15px;
+  font-size: 1.4rem;
+  color: #005349;
+}
+
+/* ---------- Tables ---------- */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 15px;
+}
+
+thead th {
+  background-color: #005349;
+  color: #FFF;
+  padding: 10px;
+  text-align: left;
+}
+
+tbody td {
+  padding: 8px;
+  border-bottom: 1px solid #CCCCCC;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #F2F2F2;
+}
+
+tbody button {
+  background-color: #FFF;
+  border: #000 solid 0.5px;
+  color: #005349;
+  font-weight: bold;
+}
+
+/* ---------- Graphiques ---------- */
+.graph-section {
+  background-color: #FFF;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 3px 8px rgba(0,0,0,0.1);
+}
+
+canvas {
+  width: 100% !important;
+  max-width: 600px;
+  height: auto !important;
+}
+
+/* ---------- Footer ---------- */
+footer {
+  background-color: #005349;
+  color: #FFF;
+  padding: 15px 20px;
+  text-align: center;
+}
+
+footer a {
+  color: #F4D35E;
+  text-decoration: none;
+  margin: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* ---------- Palette de Couleurs Utilisées ---------- */
+.color-palette {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.color-palette th, .color-palette td {
+  padding: 10px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+.color-box {
+  width: 60px;
+  height: 30px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-right: 8px;
+  border: 1px solid #ccc;
+}
+-->

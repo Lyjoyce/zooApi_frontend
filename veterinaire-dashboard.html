@@ -1,13 +1,15 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dashboard Vétérinaire - Autruche & Compagnie</title>
   <link rel="stylesheet" href="css/veto.css" />
   <link rel="stylesheet" href="css/ponteGraph.css" />
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
+
 <body>
   <header>
     <img src="images/3.png" alt="Logo Ostrich Farmer" class="logo" />
@@ -25,6 +27,18 @@
     <!-- SECTION ŒUFS VALIDÉS ET NON UTILISÉS -->
     <section>
       <h2>Œufs prêts pour les ateliers</h2>
+      <div id="legend-container">
+        <h3>Légende</h3>
+        <div class="legend-flex">
+          <div class="legend-item"><span class="legend-badge validate"></span> Valide</div>
+          <div class="legend-item"><span class="legend-badge allocate"></span> Allocable</div>
+          <div class="legend-item"><span class="legend-badge deactivate"></span> Inactif</div>
+          <div class="legend-item"><span class="legend-badge reactivate"></span> Réactivable</div>
+        </div>
+      </div>
+
+
+      </div>
       <table>
         <thead>
           <tr>
@@ -76,158 +90,8 @@
     <p>&copy; 2025 – Projet éducatif développé pour Zoo Autruche & Compagnie</p>
   </footer>
 
-  <script>
-    // Déconnexion
-    document.getElementById('logout-button').addEventListener('click', () => {
-      localStorage.clear();
-      window.location.href = '/index.html';
-    });
+  <script src="js/veterinaire.js"></script>
 
-    // --- Gestion des œufs ---
-    let eggsData = [];
-
-    async function loadEggs() {
-      try {
-        const response = await fetch('/json/eggs.json');
-        eggsData = await response.json();
-        renderEggsTable();
-        renderEggsChart();
-      } catch (err) {
-        console.error('Erreur chargement œufs :', err);
-      }
-    }
-
-    function renderEggsTable() {
-      const tbody = document.getElementById('eggsTableBody');
-      tbody.innerHTML = '';
-      eggsData.forEach((egg, index) => {
-        // ✅ Génération automatique d'un ID si manquant
-        if (!egg.id) egg.id = index + 1;
-
-        if (egg.active && !egg.used) {
-          const dateLaid = new Date(egg.dateLaid);
-
-          // ✅ Calcul date limite +60 jours
-          const expiryDate = new Date(dateLaid);
-          expiryDate.setDate(dateLaid.getDate() + 60);
-
-          const tr = document.createElement('tr');
-          tr.innerHTML = `
-            <td>${egg.id}</td>
-            <td>${dateLaid.toLocaleDateString()}</td>
-            <td>${expiryDate.toLocaleDateString()}</td> <!-- ✅ affichage date limite -->
-            <td>${egg.femaleId}</td>
-            <td>${egg.atelier || '-'}</td>
-            <td>${egg.validatedByVet ? "Oui" : "Non"}</td>
-            <td>
-              <button onclick="validateEgg(${egg.id})">Valider</button>
-              <button onclick="markUsed(${egg.id})">Réserver</button>
-              <button onclick="conserveEgg(${egg.id}, 30)">Conserver 30j</button>
-              <button onclick="conserveEgg(${egg.id}, 60)">Conserver 60j</button>
-            </td>
-          `;
-          tbody.appendChild(tr);
-        }
-      });
-    }
-
-    function validateEgg(id) {
-      const egg = eggsData.find(e => e.id === id);
-      if (egg) {
-        egg.validatedByVet = true;
-        alert(`Œuf ${id} validé pour consommation.`);
-        renderEggsTable();
-      }
-    }
-
-    function markUsed(id) {
-      const egg = eggsData.find(e => e.id === id);
-      if (egg) {
-        egg.used = true;
-        alert(`Œuf ${id} marqué comme utilisé pour un atelier.`);
-        renderEggsTable();
-      }
-    }
-
-    // --- Formulaire 1 : Enregistrement œuf ---
-    document.getElementById('eggForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const ostrichId = parseInt(document.getElementById('ostrichId').value);
-      const dateLaid = document.getElementById('dateLaid').value;
-
-      const newEgg = {
-        id: eggsData.length + 1,
-        femaleId: ostrichId,
-        dateLaid: dateLaid,
-        active: true,
-        used: false,
-        validatedByVet: false,
-        atelier: ""
-      };
-
-      eggsData.push(newEgg);
-      alert(`Œuf enregistré avec succès (ID: ${newEgg.id}) !`);
-      document.getElementById('eggForm').reset();
-      renderEggsTable();
-      renderEggsChart();
-    });
-
-    // --- Formulaire 2 : Association atelier ---
-    document.getElementById('assignForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      const eggId = parseInt(document.getElementById('eggIdAssign').value);
-      const atelier = document.getElementById('atelierName').value.trim();
-      const egg = eggsData.find(e => e.id === eggId);
-      if (egg) {
-        egg.atelier = atelier;
-        alert(`Œuf ${eggId} associé à l’atelier "${atelier}"`);
-        document.getElementById('assignForm').reset();
-        renderEggsTable();
-      } else {
-        alert(`Œuf ${eggId} introuvable !`);
-      }
-    });
-
-    function conserveEgg(id, days) {
-      const egg = eggsData.find(e => e.id === id);
-      if (egg && egg.validatedByVet) {
-        egg.conservationEndDate = new Date();
-        egg.conservationEndDate.setDate(egg.conservationEndDate.getDate() + days);
-        alert(`Œuf ${id} mis en conservation pour ${days} jours.`);
-        renderEggsTable();
-      } else {
-        alert("L'œuf doit être validé avant conservation !");
-      }
-    }
-
-    // --- Graphique ---
-    function renderEggsChart() {
-      const countsByDate = {};
-      eggsData.forEach(egg => {
-        const date = egg.dateLaid;
-        countsByDate[date] = (countsByDate[date] || 0) + 1;
-      });
-
-      const labels = Object.keys(countsByDate).sort();
-      const values = labels.map(date => countsByDate[date]);
-
-      const ctx = document.getElementById('eggsChart').getContext('2d');
-      new Chart(ctx, {
-        type: 'bar',
-        data: {
-          labels: labels,
-          datasets: [{
-            label: "Œufs pondus",
-            data: values,
-            backgroundColor: '#000'
-          }]
-        },
-        options: { responsive: true, scales: { y: { beginAtZero: true } } }
-      });
-    }
-
-    // Initialisation
-    loadEggs();
-  </script>
 </body>
+
 </html>
