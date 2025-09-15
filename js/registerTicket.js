@@ -27,10 +27,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const ateliersFieldset = document.getElementById("choix-ateliers");
 
   // URL backend configurable
-  // const isLocalDev = ["localhost", "127.0.0.1", "0.0.0.0"].includes(window.location.hostname);
   const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets";
-  // const API_BASE_URL = isLocalDev ? "http://localhost:8080/api/v1/tickets" : "https://api.ton-domaine.com/api/v1/tickets";
-
   // Utils erreurs
   function showError(el, msg) {
     let box = el.tagName === "FIELDSET" ? el : el.parentNode;
@@ -239,3 +236,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+/*
+// const isLocalDev = ["localhost", "127.0.0.1", "0.0.0.0"].includes(window.location.hostname);
+ // const API_BASE_URL = isLocalDev ? "http://localhost:8080/api/v1/tickets" : "https://api.ton-domaine.com/api/v1/tickets";
+*/
