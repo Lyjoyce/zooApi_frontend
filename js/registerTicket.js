@@ -173,72 +173,70 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Soumission
  form.addEventListener("submit", async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  // ✅ Validation avant envoi
-  const isValid =
-    validateFirstName() &&
-    validateLastName() &&
-    validateEmail() &&
-    validateAdultType() &&
-    validateVisitDate() &&
-    validateRatio() &&
-    validateAteliers();
+    // Validation
+    const isValid =
+      validateFirstName() &&
+      validateLastName() &&
+      validateEmail() &&
+      validateAdultType() &&
+      validateVisitDate() &&
+      validateRatio() &&
+      validateAteliers();
 
-  if (!isValid) {
-    alert("Veuillez corriger les erreurs avant de soumettre.");
-    return;
-  }
-
-  // ✅ Construction du payload compatible backend
-  const payload = {
-    firstName: firstName.value.trim(),
-    lastName: lastName.value.trim(),
-    email: email.value.trim(),
-    adultType: adultType.value.toUpperCase(), // correspond à enum AdultType
-    visitDate: visitDateInput.value,
-    nbChildren: Number(nbEnfants.value), // correspond à TicketDTO / AdultTicketRequest
-    nbAdults: Number(nbAdultes.value), // correspond à TicketDTO / AdultTicketRequest
-    ateliers: getAteliers()
-  };
-
-   try {
-    // Envoi de la réservation
-    const response = await fetch(API_BASE_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload)
-    });
-
-    const result = await response.json(); // réponse JSON
-
-    if (!response.ok) {
-      const msg = result?.message || "Erreur lors de la réservation.";
-      alert("Erreur : " + msg);
+    if (!isValid) {
+      alert("Veuillez corriger les erreurs avant de soumettre.");
       return;
     }
 
-    // Affichage numéro de ticket
-    const ticketNumber = result?.ticketNumber || "(numéro indisponible)";
-    alert("Réservation réussie ! Numéro : " + ticketNumber);
+    // Construction payload
+    const payload = {
+      firstName: firstName.value.trim(),
+      lastName: lastName.value.trim(),
+      email: email.value.trim(),
+      adultType: adultType.value,
+      visitDate: visitDateInput.value,
+      nbEnfants: Number(nbEnfants.value),
+      nbAdultes: Number(nbAdultes.value),
+      ateliers: getAteliers()
+    };
 
-    // Reset du formulaire et des erreurs
-    form.reset();
-    weekdayDisplay.textContent = "";
-    weekdayDisplay.style.color = "black";
-    clearError(firstName);
-    clearError(lastName);
-    clearError(email);
-    clearError(adultType);
-    clearError(visitDateInput);
-    clearError(nbAdultes);
-    clearError(nbEnfants);
-    clearError(ateliersFieldset);
+    try {
+      const response = await fetch(API_BASE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload)
+      });
 
-  } catch (err) {
-    console.error("Erreur :", err);
-    alert("Une erreur est survenue, veuillez réessayer.");
-  }
+      // Si la réponse n'est pas ok ou n'est pas du JSON
+      if (!response.ok) throw new Error("Erreur HTTP");
+
+      // Récupération de la réponse JSON
+      const data = await response.json();
+      const ticketNumber = data.ticketNumber || "(numéro indisponible)";
+
+      // Succès : simple alert
+      alert("Réservation réussie ! Numéro : " + ticketNumber);
+
+      // Reset formulaire
+      form.reset();
+      weekdayDisplay.textContent = "";
+      weekdayDisplay.style.color = "black";
+      clearError(firstName);
+      clearError(lastName);
+      clearError(email);
+      clearError(adultType);
+      clearError(visitDateInput);
+      clearError(nbAdultes);
+      clearError(nbEnfants);
+      clearError(ateliersFieldset);
+
+    } catch (err) {
+      console.error("Erreur JS :", err);
+      alert("Une erreur est survenue, veuillez réessayer.");
+    }
 });
 });
+
 //const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets";
