@@ -172,71 +172,73 @@ document.addEventListener("DOMContentLoaded", () => {
   if (atelierAprem) atelierAprem.addEventListener("change", validateAteliers);
 
   // Soumission
-  form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+ form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    const isValid =
-      validateFirstName() &&
-      validateLastName() &&
-      validateEmail() &&
-      validateAdultType()&&
-      validateVisitDate() &&
-      validateRatio() &&
-      validateAteliers();
+  // ✅ Validation avant envoi
+  const isValid =
+    validateFirstName() &&
+    validateLastName() &&
+    validateEmail() &&
+    validateAdultType() &&
+    validateVisitDate() &&
+    validateRatio() &&
+    validateAteliers();
 
-    if (!isValid) {
-      alert("Veuillez corriger les erreurs avant de soumettre.");
+  if (!isValid) {
+    alert("Veuillez corriger les erreurs avant de soumettre.");
+    return;
+  }
+
+  // ✅ Construction du payload compatible backend
+  const payload = {
+    firstName: firstName.value.trim(),
+    lastName: lastName.value.trim(),
+    email: email.value.trim(),
+    adultType: adultType.value.toUpperCase(), // correspond à enum AdultType
+    visitDate: visitDateInput.value,
+    nbChildren: Number(nbEnfants.value), // correspond à TicketDTO / AdultTicketRequest
+    nbAdults: Number(nbAdultes.value), // correspond à TicketDTO / AdultTicketRequest
+    ateliers: getAteliers()
+  };
+
+   try {
+    // Envoi de la réservation
+    const response = await fetch(API_BASE_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    });
+
+    const result = await response.json(); // réponse JSON
+
+    if (!response.ok) {
+      const msg = result?.message || "Erreur lors de la réservation.";
+      alert("Erreur : " + msg);
       return;
     }
 
-    const payload = {
-      firstName: firstName.value.trim(),
-      lastName: lastName.value.trim(),
-      email: email.value.trim(),
-      adultType: adultType.value,
-      visitDate: visitDateInput.value,
-      nbEnfants: Number(nbEnfants.value),
-      nbAdultes: Number(nbAdultes.value),
-      ateliers: getAteliers() // tableau de chaînes
-    };
+    // Affichage numéro de ticket
+    const ticketNumber = result?.ticketNumber || "(numéro indisponible)";
+    alert("Réservation réussie ! Numéro : " + ticketNumber);
 
-    try {
-      const response = await fetch(API_BASE_URL, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload)
-      });
+    // Reset du formulaire et des erreurs
+    form.reset();
+    weekdayDisplay.textContent = "";
+    weekdayDisplay.style.color = "black";
+    clearError(firstName);
+    clearError(lastName);
+    clearError(email);
+    clearError(adultType);
+    clearError(visitDateInput);
+    clearError(nbAdultes);
+    clearError(nbEnfants);
+    clearError(ateliersFieldset);
 
-      const text = await response.text();
-      let result;
-      try { result = JSON.parse(text); } catch {}
-
-      if (!response.ok) {
-        const msg = result?.message || text || "Erreur lors de la réservation.";
-        alert("Erreur : " + msg);
-        return;
-      }
-
-      const ticketNumber = result?.ticketNumber || "(numéro indisponible)";
-      alert("Réservation réussie ! Numéro : " + ticketNumber);
-      form.reset();
-      weekdayDisplay.textContent = "";
-      weekdayDisplay.style.color = "black";
-      clearError(firstName);
-      clearError(lastName);
-      clearError(email);
-      clearError(adultType);
-      clearError(visitDateInput);
-      clearError(nbAdultes);
-      clearError(nbEnfants);
-      clearError(ateliersFieldset);
-    } catch (err) {
-      console.error("Erreur :", err);
-      alert("Une erreur est survenue, veuillez réessayer.");
-    }
-  });
+  } catch (err) {
+    console.error("Erreur :", err);
+    alert("Une erreur est survenue, veuillez réessayer.");
+  }
 });
-/*
-// const isLocalDev = ["localhost", "127.0.0.1", "0.0.0.0"].includes(window.location.hostname);
- // const API_BASE_URL = isLocalDev ? "http://localhost:8080/api/v1/tickets" : "https://api.ton-domaine.com/api/v1/tickets";
-*/
+});
+//const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets";
