@@ -1,8 +1,11 @@
+Ne pas lancer Eclipse à chaque fois
+
+Avec Spring Boot : tu peux utiliser spring-boot:run dans ton terminal ou java -jar target/app.jar
+
+Eclipse n’est plus obligatoire pour lancer l’application.
+
 # 🚑 Fiche Git d’Urgence
-
 Petite trousse de secours pour réparer rapidement ton dépôt GitHub (HTML/CSS/JS front-end).
-
----
 
 ## 1. Revenir à l’état GitHub (perdre mes modifs locales)
 ```bash

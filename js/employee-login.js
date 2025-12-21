@@ -19,14 +19,27 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("Veuillez remplir tous les champs !");
       return;
     }
+    
+   try {
+      const response = await fetch("https://zooapi-autruche.onrender.com/api/v1/employees/login", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json"
+  },
+  body: JSON.stringify({
+    email: email,
+    password: password
+  })
+})
 
-    try {
+
+    /*try {
       const response = await fetch('http://localhost:8080/api/v1/employees/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
       });
-
+*/
       let data;
       const contentType = response.headers.get('Content-Type');
 
@@ -70,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
       alert("Erreur lors de la tentative de connexion. Vérifiez votre connexion ou le serveur.");
     }
   });
-});
+ });
+   
 
 
 /*
