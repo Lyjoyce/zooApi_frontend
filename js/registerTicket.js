@@ -12,22 +12,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const nbEnfants = document.getElementById("nbEnfants");
   const nbAdultes = document.getElementById("nbAdultes");
 
-  // Construction de l’objet
-        const ticketData = {
-            firstName,
-            lastName,
-            email,
-            nbEnfants,
-            nbAdultes
-        };
-
   // Ateliers
   const atelierMatin = document.getElementById("atelierMatin");
   const atelierAprem = document.getElementById("atelierAprem");
   const ateliersFieldset = document.getElementById("choix-ateliers");
 
   // URL backend configurable
-  const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets";
+  const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets/reserve";
   // Utils erreurs
   function showError(el, msg) {
     let box = el.tagName === "FIELDSET" ? el : el.parentNode;
@@ -171,72 +162,72 @@ document.addEventListener("DOMContentLoaded", () => {
   if (atelierMatin) atelierMatin.addEventListener("change", validateAteliers);
   if (atelierAprem) atelierAprem.addEventListener("change", validateAteliers);
 
-  // Soumission
- form.addEventListener("submit", async (e) => {
-    e.preventDefault();
+ // Soumission du formulaire
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-    // Validation
-    const isValid =
-      validateFirstName() &&
-      validateLastName() &&
-      validateEmail() &&
-      validateAdultType() &&
-      validateVisitDate() &&
-      validateRatio() &&
-      validateAteliers();
+  // 1️⃣ Validation front
+  const isValid =
+    validateFirstName() &&
+    validateLastName() &&
+    validateEmail() &&
+    validateAdultType() &&
+    validateVisitDate() &&
+    validateRatio() &&
+    validateAteliers();
 
-    if (!isValid) {
-      alert("Veuillez corriger les erreurs avant de soumettre.");
-      return;
-    }
+  if (!isValid) {
+    alert("Veuillez corriger les erreurs avant de soumettre.");
+    return;
+  }
 
-    // Construction payload
-    const payload = {
-      firstName: firstName.value.trim(),
-      lastName: lastName.value.trim(),
-      email: email.value.trim(),
-      adultType: adultType.value,
-      visitDate: visitDateInput.value,
-      nbEnfants: Number(nbEnfants.value),
-      nbAdultes: Number(nbAdultes.value),
-      ateliers: getAteliers()
-    };
+  // 2️⃣ Payload EXACT attendu par AdultTicketRequest
+  const payload = {
+    firstName: firstName.value.trim(),
+    lastName: lastName.value.trim(),
+    email: email.value.trim(),
+    adultType: adultType.value,
+    visitDate: visitDateInput.value,
+    nbEnfants: Number(nbEnfants.value),
+    nbAdultes: Number(nbAdultes.value),
+    ateliers: getAteliers()
+  };
 
-    try {
-      const response = await fetch(API_BASE_URL, {
+  console.log("Payload envoyé :", payload); // 🔍 DEBUG
+
+  try {
+    const response = await fetch(
+      "https://zooapi-autruche.onrender.com/api/v1/tickets/reserve",
+      {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload)
-      });
+      }
+    );
 
-      // Si la réponse n'est pas ok ou n'est pas du JSON
-      if (!response.ok) throw new Error("Erreur HTTP");
-
-      // Récupération de la réponse JSON
-      const data = await response.json();
-      const ticketNumber = data.ticketNumber || "(numéro indisponible)";
-
-      // Succès : simple alert
-      alert("Réservation réussie ! Numéro : " + ticketNumber);
-
-      // Reset formulaire
-      form.reset();
-      weekdayDisplay.textContent = "";
-      weekdayDisplay.style.color = "black";
-      clearError(firstName);
-      clearError(lastName);
-      clearError(email);
-      clearError(adultType);
-      clearError(visitDateInput);
-      clearError(nbAdultes);
-      clearError(nbEnfants);
-      clearError(ateliersFieldset);
-
-    } catch (err) {
-      console.error("Erreur JS :", err);
-      alert("Une erreur est survenue, veuillez réessayer.");
+    // 3️⃣ Gestion erreurs backend explicite
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("Erreur backend :", errorText);
+      alert(errorText || "Erreur lors de la réservation.");
+      return;
     }
-});
-});
 
-//const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets";
+    // 4️⃣ Réponse JSON attendue
+    const result = await response.json();
+    console.log("Réponse backend :", result);
+
+    alert("Réservation réussie ! Numéro : " + result.ticketNumber);
+
+    // 5️⃣ Reset UI
+    form.reset();
+    weekdayDisplay.textContent = "";
+    weekdayDisplay.style.color = "black";
+  } catch (err) {
+    console.error("Erreur réseau :", err);
+    alert("Impossible de contacter le serveur.");
+  }
+});
+});
+//const API_BASE_URL = "https://zooapi-autruche.onrender.com/api/v1/tickets/reserve";
+
