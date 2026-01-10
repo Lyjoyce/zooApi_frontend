@@ -16,17 +16,17 @@ document.addEventListener("DOMContentLoaded", () => {
     const atelierAprem = document.getElementById("atelierAprem");
     const ateliersFieldset = document.getElementById("choix-ateliers");
 
+    const API_URL = "http://localhost:8080/api/v1/tickets/reserve";
     const ALLOWED_DAYS = [1, 2, 4, 5]; // Lundi, Mardi, Jeudi, Vendredi
     const WEEKDAYS = ["Dimanche","Lundi","Mardi","Mercredi","Jeudi","Vendredi","Samedi"];
 
     function showError(el, msg) {
         let box = el.tagName === "FIELDSET" ? el : el.parentNode;
         let err = box.querySelector(".error-message");
-        if (!err) {
+        if(!err){
             err = document.createElement("small");
             err.className = "error-message";
             err.style.color = "red";
-            err.style.display = "block";
             box.appendChild(err);
         }
         err.textContent = msg;
@@ -35,20 +35,20 @@ document.addEventListener("DOMContentLoaded", () => {
     function clearError(el) {
         let box = el.tagName === "FIELDSET" ? el : el.parentNode;
         const err = box.querySelector(".error-message");
-        if (err) err.remove();
+        if(err) err.remove();
     }
 
-    // Validations simples
-    function validateFirstName() { if(!firstName.value.trim()){ showError(firstName,"Le prénom est requis."); return false;} clearError(firstName); return true;}
-    function validateLastName() { if(!lastName.value.trim()){ showError(lastName,"Le nom est requis."); return false;} clearError(lastName); return true;}
-    function validateEmail() { 
-        const v = email.value.trim(); 
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; 
-        if(!v){showError(email,"L'email est requis."); return false;} 
-        if(!re.test(v)){showError(email,"Email invalide."); return false;} 
+    // Validations
+    function validateFirstName(){ if(!firstName.value.trim()){ showError(firstName,"Le prénom est requis."); return false;} clearError(firstName); return true;}
+    function validateLastName(){ if(!lastName.value.trim()){ showError(lastName,"Le nom est requis."); return false;} clearError(lastName); return true;}
+    function validateEmail(){ 
+        const v = email.value.trim();
+        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if(!v){ showError(email,"L'email est requis."); return false;}
+        if(!re.test(v)){ showError(email,"Email invalide."); return false;}
         clearError(email); return true;
     }
-    function validateAdultType(){ if(!adultType.value){showError(adultType,"Veuillez sélectionner un type."); return false;} clearError(adultType); return true;}
+    function validateAdultType(){ if(!adultType.value){ showError(adultType,"Veuillez sélectionner un type."); return false;} clearError(adultType); return true;}
     function validateVisitDate(){
         if(!visitDateInput.value){ showError(visitDateInput,"La date est requise."); weekdayDisplay.textContent=""; return false;}
         const d = new Date(visitDateInput.value);
@@ -60,9 +60,9 @@ document.addEventListener("DOMContentLoaded", () => {
     function validateRatio(){
         const enfants = Number(nbEnfants.value);
         const adultes = Number(nbAdultes.value);
-        if(isNaN(enfants) || enfants<0){showError(nbEnfants,"Nb enfants positif."); return false;}
-        if(isNaN(adultes) || adultes<=0){showError(nbAdultes,"Au moins 1 adulte."); return false;}
-        if(enfants/ adultes>6){showError(nbEnfants,"1 adulte pour 6 enfants max."); return false;}
+        if(isNaN(enfants) || enfants<0){ showError(nbEnfants,"Nb enfants positif."); return false;}
+        if(isNaN(adultes) || adultes<=0){ showError(nbAdultes,"Au moins 1 adulte."); return false;}
+        if(enfants/ adultes>6){ showError(nbEnfants,"1 adulte pour 6 enfants max."); return false;}
         clearError(nbEnfants); clearError(nbAdultes); return true;
     }
     function getAteliers(){
@@ -73,11 +73,11 @@ document.addEventListener("DOMContentLoaded", () => {
     }
     function validateAteliers(){
         const list = getAteliers();
-        if(list.length===0){showError(ateliersFieldset,"Sélectionner au moins un atelier."); return false;}
+        if(list.length===0){ showError(ateliersFieldset,"Sélectionner au moins un atelier."); return false;}
         clearError(ateliersFieldset); return true;
     }
 
-    // Listeners
+    // Listeners sur blur / input
     [firstName,lastName,email,adultType,visitDateInput,nbEnfants,nbAdultes].forEach(el=>{
         el.addEventListener("blur",()=>{ validateFirstName(); validateLastName(); validateEmail(); validateAdultType(); validateVisitDate(); validateRatio(); });
         el.addEventListener("input",()=>{ validateFirstName(); validateLastName(); validateEmail(); validateAdultType(); validateVisitDate(); validateRatio(); });
@@ -89,7 +89,8 @@ document.addEventListener("DOMContentLoaded", () => {
     form.addEventListener("submit", async (e)=>{
         e.preventDefault();
 
-        const isValid = validateFirstName() && validateLastName() && validateEmail() && validateAdultType() && validateVisitDate() && validateRatio() && validateAteliers();
+        const isValid = validateFirstName() && validateLastName() && validateEmail() && validateAdultType() &&
+                        validateVisitDate() && validateRatio() && validateAteliers();
         if(!isValid){ alert("Corrigez les erreurs."); return; }
 
         const payload = {
@@ -106,10 +107,9 @@ document.addEventListener("DOMContentLoaded", () => {
         console.log("Payload envoyé :", payload);
 
         try {
-            const response = await fetch("https://zooapi-autruche.onrender.com/api/v1/tickets/reserve", {
-
-                method:"POST",
-                headers:{"Content-Type":"application/json"},
+            const response = await fetch(API_URL, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(payload)
             });
 
@@ -123,7 +123,6 @@ document.addEventListener("DOMContentLoaded", () => {
             const result = await response.json();
             console.log("Réservation réussie, ticket :", result);
 
-            // Affichage dans la page
             const display = document.getElementById("ticketResult");
             display.innerHTML = `
                 <h3>Réservation confirmée !</h3>
@@ -142,4 +141,4 @@ document.addEventListener("DOMContentLoaded", () => {
             alert("Erreur réseau, impossible de joindre l'API.");
         }
     });
-}); 
+});
