@@ -125,13 +125,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const display = document.getElementById("ticketResult");
             display.innerHTML = `
-                <h3>Réservation confirmée !</h3>
-                <p>Ticket Number : <strong>${result.ticketNumber}</strong></p>
-                <p>Date de visite : ${result.visitDate}</p>
-                <p>Nom : ${result.adult.firstName} ${result.adult.lastName}</p>
-                <p>Email : ${result.adult.email}</p>
-                <p>Ateliers : ${result.ateliers.join(", ")}</p>
-            `;
+  <h3>Réservation confirmée !</h3>
+  <p><strong>Numéro de réservation :</strong> ${result.ticketNumber}</p>
+  <p><strong>Date de visite :</strong> ${result.visitDate}</p>
+  <p><strong>Email :</strong> ${result.adultEmail}</p>
+`;
+
 
             form.reset();
             weekdayDisplay.textContent = "";
